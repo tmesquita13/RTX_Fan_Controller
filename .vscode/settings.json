@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\Thales Mesquita\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python.terminal.executeInFileDir": true,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true
+    }
+}
+
+

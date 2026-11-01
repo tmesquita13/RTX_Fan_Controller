@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "⚡ Executar como Administrador (Gaming HUD)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app_webview.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "⚡ Executar Painel LCD Tela Cheia (Admin)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app_webview.py",
+            "args": ["--fullscreen"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
+

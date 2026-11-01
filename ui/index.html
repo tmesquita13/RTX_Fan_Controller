@@ -1,0 +1,5191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛡️ Aegis Gaming HUD & Hardware Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================= TEMAS DOS JOGOS MAIS JOGADOS DA INTERNET ================= */
+    :root, body.theme-cs2 {
+      --bg: #0E141E;
+      --bg-image: url('images/bg_cs2.jpg');
+      --card-bg: rgba(14, 20, 30, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 140, 0, 0.45);
+      --card-glow: rgba(255, 140, 0, 0.3);
+      --primary: #FF7700;      /* Laranja Tático CS2 */
+      --secondary: #E5A93C;    /* Ouro Tático */
+      --accent: #FFFFFF;
+      --text: #F1F5F9;
+      --subtext: #94A3B8;
+      --pill-bg: rgba(27, 36, 51, 0.6);
+      --pill-fill: #E5A93C;
+      --danger: #FF1744;
+      --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body.theme-valorant {
+      --bg: #0F1923;
+      --bg-image: url('images/bg_valorant.jpg');
+      --card-bg: rgba(15, 25, 35, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 70, 85, 0.5);
+      --card-glow: rgba(255, 70, 85, 0.35);
+      --primary: #FF4655;      /* Vermelho Radianite Valorant */
+      --secondary: #00F5D4;    /* Ciano Brilhante */
+      --accent: #FFFFFF;
+      --text: #ECE8E1;
+      --subtext: #8FA3B0;
+      --pill-bg: rgba(27, 43, 56, 0.6);
+      --pill-fill: #FF4655;
+    }
+
+    body.theme-lol {
+      --bg: #091428;
+      --bg-image: url('images/bg_lol.jpg');
+      --card-bg: rgba(10, 20, 40, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(200, 170, 110, 0.5);
+      --card-glow: rgba(10, 200, 185, 0.3);
+      --primary: #C8AA6E;      /* Ouro Hextech */
+      --secondary: #0AC8B9;    /* Azul Piltover */
+      --accent: #F0E6D2;
+      --text: #F0E6D2;
+      --subtext: #7B8F9E;
+      --pill-bg: rgba(17, 37, 61, 0.6);
+      --pill-fill: #C8AA6E;
+    }
+
+    body.theme-gta {
+      --bg: #1B092B;
+      --bg-image: url('images/bg_gta.jpg');
+      --card-bg: rgba(28, 12, 44, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 0, 128, 0.5);
+      --card-glow: rgba(0, 240, 255, 0.35);
+      --primary: #FF007F;      /* Rosa Choque Vice City */
+      --secondary: #00F0FF;    /* Turquesa Oceano */
+      --accent: #FF8800;
+      --text: #FFFFFF;
+      --subtext: #C49EDB;
+      --pill-bg: rgba(43, 22, 66, 0.6);
+      --pill-fill: #FF007F;
+    }
+
+    body.theme-warzone {
+      --bg: #101812;
+      --bg-image: url('images/bg_warzone.jpg');
+      --card-bg: rgba(16, 24, 18, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(118, 255, 3, 0.45);
+      --card-glow: rgba(118, 255, 3, 0.3);
+      --primary: #76FF03;      /* Verde Visão Noturna COD */
+      --secondary: #C4B594;    /* Areia Tática */
+      --accent: #FFFFFF;
+      --text: #E8F5E9;
+      --subtext: #819785;
+      --pill-bg: rgba(29, 43, 32, 0.6);
+      --pill-fill: #76FF03;
+    }
+
+    body.theme-fortnite {
+      --bg: #160A2D;
+      --bg-image: url('images/bg_fortnite.jpg');
+      --card-bg: rgba(26, 12, 54, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(157, 78, 221, 0.5);
+      --card-glow: rgba(0, 229, 255, 0.35);
+      --primary: #9D4EDD;      /* Roxo da Tempestade */
+      --secondary: #00E5FF;    /* Azul Vitória */
+      --accent: #FFD166;
+      --text: #FFFFFF;
+      --subtext: #B896E0;
+      --pill-bg: rgba(43, 24, 79, 0.6);
+      --pill-fill: #00E5FF;
+    }
+
+    body.theme-minecraft {
+      --bg: #121016;
+      --bg-image: url('images/bg_minecraft.jpg');
+      --card-bg: rgba(18, 15, 24, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(0, 230, 118, 0.45);
+      --card-glow: rgba(0, 230, 255, 0.3);
+      --primary: #00E676;      /* Verde Esmeralda */
+      --secondary: #40C4FF;    /* Azul Diamante */
+      --accent: #FF1744;       /* Vermelho Redstone */
+      --text: #F5F5F5;
+      --subtext: #9E9E9E;
+      --pill-bg: rgba(34, 29, 43, 0.6);
+      --pill-fill: #00E676;
+    }
+
+    body.theme-eldenring {
+      --bg: #0E0C0F;
+      --bg-image: url('images/bg_eldenring.jpg');
+      --card-bg: rgba(18, 15, 20, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(242, 201, 76, 0.45);
+      --card-glow: rgba(255, 153, 0, 0.3);
+      --primary: #F2C94C;      /* Ouro da Térvore */
+      --secondary: #FF9900;    /* Âmbar da Graça */
+      --accent: #FFFFFF;
+      --text: #FFF8E7;
+      --subtext: #A89B8C;
+      --pill-bg: rgba(43, 34, 27, 0.6);
+      --pill-fill: #F2C94C;
+    }
+
+    body.theme-cyberpunk {
+      --bg: #0C0C10;
+      --bg-image: url('images/bg_cyberpunk.jpg');
+      --card-bg: rgba(16, 16, 22, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 230, 0, 0.5);
+      --card-glow: rgba(0, 240, 255, 0.35);
+      --primary: #FFE600;      /* Amarelo Samurai */
+      --secondary: #00F0FF;    /* Ciano Night City */
+      --accent: #FF003C;       /* Vermelho Arasaka */
+      --text: #FFFFFF;
+      --subtext: #A0A0B0;
+      --pill-bg: rgba(36, 36, 22, 0.6);
+      --pill-fill: #FFE600;
+    }
+
+    body.theme-apex {
+      --bg: #121216;
+      --bg-image: url('images/bg_apex.jpg');
+      --card-bg: rgba(20, 20, 26, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(218, 41, 42, 0.5);
+      --card-glow: rgba(0, 210, 255, 0.3);
+      --primary: #DA292A;      /* Vermelho Apex Predator */
+      --secondary: #00D2FF;    /* Ciano Escudo */
+      --accent: #FFB800;       /* Ouro Campeão */
+      --text: #FFFFFF;
+      --subtext: #9E9EB0;
+      --pill-bg: rgba(41, 24, 25, 0.6);
+      --pill-fill: #DA292A;
+    }
+
+    body.theme-turing {
+      --bg: #090D14;
+      --bg-image: url('images/bg_turing.jpg');
+      --card-bg: rgba(14, 20, 32, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(60, 80, 115, 0.65);
+      --card-glow: rgba(0, 213, 255, 0.25);
+      --primary: #9D00FF;      /* Roxo elétrico da foto */
+      --secondary: #00D5FF;    /* Ciano neon da foto */
+      --accent: #FFFFFF;
+      --text: #FFFFFF;
+      --subtext: #94A3B8;
+      --pill-bg: rgba(27, 36, 51, 0.6);
+      --pill-fill: #FFFFFF;
+      --danger: #FF1744;
+    }
+
+    /* ================= ESTILOS VISUAIS & HARDWARE EXTRAS ================= */
+    body.theme-synthwave {
+      --bg: #140826;
+      --bg-image: url('images/bg_synthwave.jpg');
+      --card-bg: rgba(24, 10, 44, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 0, 127, 0.55);
+      --card-glow: rgba(0, 240, 255, 0.35);
+      --primary: #FF007F;      /* Neon Magenta 80s */
+      --secondary: #00F0FF;    /* Ciano Laser */
+      --accent: #FFE600;
+      --text: #FFFFFF;
+      --subtext: #D5B3FF;
+      --pill-bg: rgba(45, 18, 75, 0.6);
+      --pill-fill: #FF007F;
+    }
+
+    body.theme-matrix {
+      --bg: #030B05;
+      --bg-image: url('images/bg_matrix.jpg');
+      --card-bg: rgba(4, 18, 8, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(0, 255, 65, 0.5);
+      --card-glow: rgba(0, 255, 65, 0.35);
+      --primary: #00FF41;      /* Hacker Terminal Green */
+      --secondary: #39FF14;    /* Verde Fósforo */
+      --accent: #FFFFFF;
+      --text: #E0FFE5;
+      --subtext: #4CAF50;
+      --pill-bg: rgba(10, 35, 15, 0.6);
+      --pill-fill: #00FF41;
+    }
+
+    body.theme-magma {
+      --bg: #1A0702;
+      --bg-image: url('images/bg_magma.jpg');
+      --card-bg: rgba(30, 10, 4, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 61, 0, 0.55);
+      --card-glow: rgba(255, 145, 0, 0.35);
+      --primary: #FF3D00;      /* Magma Ardente */
+      --secondary: #FF9100;    /* Laranja Vulcânico */
+      --accent: #FFD600;
+      --text: #FFF3E0;
+      --subtext: #FFAB91;
+      --pill-bg: rgba(55, 18, 8, 0.6);
+      --pill-fill: #FF3D00;
+    }
+
+    body.theme-arctic {
+      --bg: #05101A;
+      --bg-image: url('images/bg_arctic.jpg');
+      --card-bg: rgba(10, 24, 38, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(0, 229, 255, 0.5);
+      --card-glow: rgba(128, 222, 234, 0.35);
+      --primary: #00E5FF;      /* Gelo Polar Cryo */
+      --secondary: #80DEEA;    /* Azul Glacial */
+      --accent: #FFFFFF;
+      --text: #E0F7FA;
+      --subtext: #80CBC4;
+      --pill-bg: rgba(15, 40, 60, 0.6);
+      --pill-fill: #00E5FF;
+    }
+
+    body.theme-eva {
+      --bg: #120524;
+      --bg-image: url('images/bg_eva.jpg');
+      --card-bg: rgba(22, 8, 42, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(157, 0, 255, 0.55);
+      --card-glow: rgba(0, 255, 102, 0.35);
+      --primary: #9D00FF;      /* Roxo Eva 01 */
+      --secondary: #00FF66;    /* Verde Fluorescente Berserk */
+      --accent: #FF0055;
+      --text: #FFFFFF;
+      --subtext: #CE93D8;
+      --pill-bg: rgba(40, 15, 75, 0.6);
+      --pill-fill: #00FF66;
+    }
+
+    body.theme-gold {
+      --bg: #141008;
+      --bg-image: url('images/bg_gold.jpg');
+      --card-bg: rgba(28, 22, 12, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 215, 0, 0.5);
+      --card-glow: rgba(255, 160, 0, 0.35);
+      --primary: #FFD700;      /* Ouro Puro 24K */
+      --secondary: #FFA000;    /* Âmbar Imperial */
+      --accent: #FFF8E1;
+      --text: #FFF8E1;
+      --subtext: #FFE082;
+      --pill-bg: rgba(45, 35, 18, 0.6);
+      --pill-fill: #FFD700;
+    }
+
+    body.theme-supercar {
+      --bg: #0C0D10;
+      --bg-image: url('images/bg_supercar.jpg');
+      --card-bg: rgba(18, 20, 24, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(255, 23, 68, 0.5);
+      --card-glow: rgba(255, 109, 0, 0.35);
+      --primary: #FF1744;      /* Vermelho Supercar RPM */
+      --secondary: #FF6D00;    /* Laranja Taquímetro */
+      --accent: #FFFFFF;
+      --text: #F5F5F5;
+      --subtext: #9E9E9E;
+      --pill-bg: rgba(38, 22, 24, 0.6);
+      --pill-fill: #FF1744;
+    }
+
+    body.theme-scifi {
+      --bg: #060B14;
+      --bg-image: url('images/bg_scifi.jpg');
+      --card-bg: rgba(12, 20, 35, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(0, 210, 255, 0.5);
+      --card-glow: rgba(61, 90, 254, 0.35);
+      --primary: #00D2FF;      /* Holograma Estelar */
+      --secondary: #3D5AFE;    /* Warp Drive Blue */
+      --accent: #E1F5FE;
+      --text: #FFFFFF;
+      --subtext: #82B1FF;
+      --pill-bg: rgba(18, 30, 55, 0.6);
+      --pill-fill: #00D2FF;
+    }
+
+    body.theme-custom {
+      --bg: #0A0E17;
+      --bg-image: url('images/custom_bg.jpg');
+      --card-bg: rgba(14, 20, 32, var(--card-bg-opacity, 0.46));
+      --card-border: rgba(0, 229, 255, 0.5);
+      --card-glow: rgba(0, 229, 255, 0.35);
+      --primary: #00E5FF;
+      --secondary: #00E5FF;
+      --accent: #FFFFFF;
+      --text: #FFFFFF;
+      --subtext: #94A3B8;
+      --pill-bg: rgba(27, 36, 51, 0.6);
+      --pill-fill: #00E5FF;
+    }
+
+    /* ================= RESET & BASE ================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: linear-gradient(rgba(7, 10, 16, var(--bg-dim, 0.15)), rgba(7, 10, 16, var(--bg-dim, 0.28))), var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      filter: brightness(var(--bg-brightness, 1));
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: background-image 0.5s ease, background-color 0.4s ease;
+    }
+
+    /* Scrollbars Modernas Dark Globais (Elimina Scrollbars Cinzas Nativas do Windows) */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+    }
+
+    ::-webkit-scrollbar-button {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    /* ================= CANVAS DE FUNDO ANIMADO & EFEITOS DINÂMICOS ================= */
+    #animated-bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.85;
+      transition: opacity 0.4s ease;
+    }
+
+    body.animated-bg-disabled #animated-bg-canvas {
+      display: none;
+    }
+
+    /* Suave respiração e movimento do wallpaper de fundo */
+    body.animated-bg-active {
+      animation: subtleWallpaperFloat 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes subtleWallpaperFloat {
+      0% {
+        background-position: 50% 50%;
+        background-size: 100% 100%;
+      }
+      50% {
+        background-position: 51.5% 48.5%;
+        background-size: 103% 103%;
+      }
+      100% {
+        background-position: 48.5% 51.5%;
+        background-size: 101.5% 101.5%;
+      }
+    }
+
+    .scanline-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.10;
+    }
+
+    /* ================= HEADER & NAVIGATION ================= */
+    header {
+      background: rgba(8, 12, 20, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      font-size: 20px;
+      color: var(--secondary);
+      filter: drop-shadow(0 0 8px var(--secondary));
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--subtext);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(14, 20, 32, 0.7);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--subtext);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-btn.active {
+      background: var(--secondary);
+      color: #070B12;
+      font-weight: 700;
+      box-shadow: 0 0 16px var(--secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .action-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 12px var(--card-glow);
+    }
+
+    .action-btn.btn-fullscreen {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .action-btn.btn-close {
+      background: rgba(220, 38, 38, 0.25);
+      border-color: rgba(220, 38, 38, 0.6);
+      color: #FF8A80;
+    }
+
+    .action-btn.btn-close:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+    }
+
+    /* BARRA DE AVISO DE ADMINISTRADOR */
+    .admin-warning-bar {
+      background: rgba(255, 23, 68, 0.25);
+      border-bottom: 1px solid var(--danger);
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      backdrop-filter: blur(10px);
+      z-index: 90;
+    }
+
+    .btn-elevate-admin {
+      background: var(--danger);
+      color: #FFFFFF;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 23, 68, 0.5);
+      transition: all 0.2s;
+    }
+
+    .btn-elevate-admin:hover {
+      background: #FF5252;
+      box-shadow: 0 0 18px rgba(255, 23, 68, 0.8);
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+    main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tab-content {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    /* ================= GRID DO SENSORPANEL LCD COMPACTO (FOCADO NO BACKGROUND) ================= */
+    #tab-turing {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      margin: 0;
+      padding: 10px 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .turing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 86%;
+      max-width: 840px;
+      margin: auto;
+      z-index: 5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ================= PAINEL DE JOGO ATIVO AO VIVO (GAMING STATS HUD) ================= */
+    .hud-game-card {
+      background: rgba(10, 16, 26, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--secondary);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), 0 0 20px var(--card-glow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      animation: gameHudSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes gameHudSlideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .game-hud-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+    }
+
+    .game-hud-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .game-hud-live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #00E676;
+      box-shadow: 0 0 10px #00E676;
+      animation: pulseLiveDot 1.4s infinite ease-in-out;
+    }
+
+    @keyframes pulseLiveDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.65; }
+    }
+
+    .game-hud-icon {
+      font-size: 15px;
+    }
+
+    .game-hud-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--secondary);
+    }
+
+    .game-hud-exe-pill {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--subtext);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .game-hud-timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--subtext);
+      font-weight: 600;
+    }
+
+    .game-hud-timer-val {
+      font-family: var(--font-mono);
+      color: var(--secondary);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .game-hud-stats-row {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr 1.6fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .game-stat-box {
+      background: rgba(14, 22, 36, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      position: relative;
+    }
+
+    .game-stat-box.fps-box {
+      background: rgba(0, 229, 255, 0.06);
+      border-color: rgba(0, 229, 255, 0.25);
+    }
+
+    .game-stat-header {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: var(--subtext);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .game-stat-main {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .game-val-giant {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      color: #FFFFFF;
+      text-shadow: 0 0 14px var(--secondary);
+    }
+
+    .game-val-mid {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #FFFFFF;
+    }
+
+    .game-stat-unit {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .game-stat-footer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #00E676;
+    }
+
+    .game-tag-success {
+      color: #00E676;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .game-tag-info {
+      color: #00E5FF;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .graph-live-tag {
+      font-family: var(--font-mono);
+      color: #00E5FF;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .game-frametime-graph-container {
+      width: 100%;
+      height: 34px;
+      margin-top: 2px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .game-frametime-graph-container svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .turing-row-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .turing-row-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr 1.05fr;
+      gap: 10px;
+    }
+
+    .turing-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--card-blur, 8px));
+      -webkit-backdrop-filter: blur(var(--card-blur, 8px));
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 7px 11px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .turing-card:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 18px var(--card-glow);
+      background: rgba(10, 16, 26, 0.58);
+    }
+
+    .card-header-title {
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .card-body-horizontal {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex: 1;
+      gap: 10px;
+    }
+
+    /* ================= MOSTRADOR CIRCULAR COM FOTO E ANIMAÇÕES ================= */
+    .gauge-wrapper {
+      position: relative;
+      width: 76px !important;
+      height: 76px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .gauge-radar-scanner {
+      position: absolute;
+      width: 56px !important;
+      height: 56px !important;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 310deg, var(--secondary) 360deg);
+      opacity: 0.18;
+      pointer-events: none;
+      animation: radarSweep 4s linear infinite;
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, transparent 70%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, transparent 70%);
+      z-index: 2;
+    }
+
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .gauge-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+      z-index: 1;
+    }
+
+    .gauge-tech-ring {
+      fill: none;
+      stroke: var(--secondary);
+      stroke-width: 1;
+      stroke-dasharray: 4 10;
+      opacity: 0.5;
+      transform-origin: 60px 60px;
+    }
+
+    .ring-cw { animation: spinRingCW 24s linear infinite; }
+    .ring-ccw { animation: spinRingCCW 20s linear infinite; }
+
+    @keyframes spinRingCW {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinRingCCW {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    .gauge-bg-circle {
+      stroke: var(--card-border);
+      stroke-width: 1.5;
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.8));
+    }
+
+    .gauge-track-arc {
+      fill: none;
+      stroke: var(--pill-bg);
+      stroke-width: 6;
+      stroke-linecap: butt;
+      stroke-dasharray: 8 3;
+    }
+
+    .gauge-fill-arc {
+      fill: none;
+      stroke: var(--secondary);
+      stroke-width: 6.5;
+      stroke-linecap: butt;
+      stroke-dasharray: 8 3;
+      filter: drop-shadow(0 0 8px var(--secondary));
+      transition: stroke-dashoffset 0.4s ease;
+    }
+
+    .gauge-center-content {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 3;
+    }
+
+    .gauge-icon {
+      font-size: 10.5px;
+      margin-bottom: 0px;
+      color: var(--secondary);
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 3px var(--secondary)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 10px var(--secondary)); }
+    }
+
+    .gauge-value {
+      font-family: var(--font-display);
+      font-size: 17px !important;
+      font-weight: 900;
+      line-height: 1;
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    .gauge-label {
+      font-family: var(--font-body);
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
+
+    /* ================= BARRAS CÁPSULA E GRID DE TELEMETRIA ORGANIZADA ================= */
+    .metrics-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .pill-metric-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-track {
+      flex: 1;
+      height: 7px;
+      background: var(--pill-bg);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pill-fill {
+      height: 100%;
+      background: var(--pill-fill);
+      border-radius: 4px;
+      width: 45%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      transition: width 0.4s ease, background 0.3s ease;
+    }
+
+    .pill-label-val {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 70px;
+    }
+
+    .pill-tag {
+      font-size: 8.5px;
+      color: var(--subtext);
+    }
+
+    /* GRID DE TELEMETRIA ULTRA-ORGANIZADA (TABULAR) */
+    .hud-metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 2px;
+    }
+
+    .hud-cell {
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hud-cell .cell-lbl {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hud-cell .cell-val {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Medidores dos 6 núcleos físicos da CPU */
+    .cpu-cores-meter {
+      display: flex;
+      gap: 2.5px;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .core-bar-track {
+      flex: 1;
+      height: 3.5px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .core-bar-fill {
+      height: 100%;
+      background: var(--secondary);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* MODO FOCO / MINIMALISTA (OCULTA ESTATÍSTICAS SECUNDÁRIAS) */
+    body.hud-mode-minimal .hud-metric-grid,
+    body.hud-mode-minimal .cpu-cores-meter,
+    body.hud-mode-minimal .hud-extra-info {
+      display: none !important;
+    }
+
+    body.hud-mode-minimal .metrics-col {
+      gap: 12px;
+    }
+
+    body.hud-mode-minimal .pill-track {
+      height: 12px;
+      border-radius: 6px;
+    }
+
+    body.hud-mode-minimal .pill-fill {
+      border-radius: 6px;
+    }
+
+    /* ================= STORAGE (TODOS OS SSDs E HDDs) ================= */
+    .disks-scroll-box {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      max-height: 52px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .disks-scroll-box::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .disks-scroll-box::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
+
+    .disk-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 1px 0;
+    }
+
+    .disk-letter {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      min-width: 17px;
+      color: var(--text);
+    }
+
+    .disk-badge {
+      font-size: 8px;
+      font-weight: 800;
+      padding: 0px 4px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+      line-height: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+
+    .badge-ssd {
+      background: rgba(0, 229, 255, 0.16);
+      color: var(--secondary, #00E5FF);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+    }
+
+    .badge-hdd {
+      background: rgba(255, 170, 0, 0.16);
+      color: #FFAA00;
+      border: 1px solid rgba(255, 170, 0, 0.35);
+    }
+
+    .disk-track {
+      flex: 1;
+      height: 5px !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-radius: 3px !important;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .fill-ssd {
+      height: 100%;
+      background: var(--pill-fill, var(--secondary, #00E5FF));
+      border-radius: 3px;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 8px var(--card-glow, rgba(0, 229, 255, 0.4));
+    }
+
+    .fill-hdd {
+      height: 100%;
+      background: #FFAA00;
+      border-radius: 3px;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 8px rgba(255, 170, 0, 0.35);
+    }
+
+    .fill-warning {
+      height: 100%;
+      background: #FF453A;
+      border-radius: 3px;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 8px rgba(255, 69, 58, 0.5);
+    }
+
+    .disk-stats {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 9.5px;
+      color: var(--text);
+      white-space: nowrap;
+      min-width: 68px;
+      text-align: right;
+    }
+
+    /* ================= REDE E DATA/HORA ================= */
+    .net-rates-box {
+      display: flex;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .net-rate-item {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      font-weight: 700;
+    }
+
+    .net-down {
+      color: var(--secondary);
+      border-color: rgba(0, 213, 255, 0.3);
+    }
+
+    .net-up {
+      color: #00E676;
+      border-color: rgba(0, 230, 118, 0.3);
+    }
+
+    .date-time-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .clock-date-val {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 1.5px;
+    }
+
+    .clock-time-val {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 14px var(--card-glow);
+    }
+
+    /* ================= BARRA DE SELEÇÃO DOS TEMAS DE JOGOS ================= */
+    .theme-selector-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6px 14px;
+      margin: 6px auto 0 auto;
+      background: rgba(0, 0, 0, 0.50);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      max-width: 920px;
+      width: 90%;
+      z-index: 5;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .theme-selector-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .theme-chip {
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 4px 12px;
+      border-radius: 14px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .theme-chip:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 12px var(--card-glow);
+      transform: translateY(-2px);
+    }
+
+    .theme-chip.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 16px var(--secondary);
+    }
+
+    /* ================= TAB 2 & 3: CONTROLES DE HARDWARE ================= */
+    .fan-control-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .profile-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .profile-btn {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .profile-btn:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px var(--card-glow);
+    }
+
+    .profile-btn.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 16px var(--secondary);
+    }
+
+    /* Estilos Modernos para Perfis de GPU V2 */
+    .profile-buttons-grid-v2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .profile-btn-v2 {
+      background: rgba(15, 23, 38, 0.7);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .profile-btn-v2:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 14px var(--card-glow);
+      transform: translateY(-2px);
+      background: rgba(26, 38, 58, 0.85);
+    }
+
+    .profile-btn-v2.active {
+      background: rgba(0, 245, 212, 0.16);
+      border-color: var(--secondary);
+      box-shadow: 0 0 18px var(--secondary);
+    }
+
+    .profile-btn-v2 .prof-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .profile-btn-v2 .prof-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .profile-btn-v2 .prof-title {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .profile-btn-v2.active .prof-title {
+      color: var(--secondary);
+    }
+
+    .profile-btn-v2 .prof-desc {
+      font-size: 10px;
+      color: var(--subtext);
+    }
+
+    .fan-preset-pill {
+      flex: 1;
+      padding: 5px 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
+    }
+
+    .fan-preset-pill:hover {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    .fan-preset-pill.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+    }
+
+    /* Telemetria e Dashboard de Fans GPU */
+    .gpu-fan-telemetry-hud {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .fan-telemetry-box {
+      background: rgba(7, 11, 18, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.25s ease;
+    }
+
+    .fan-telemetry-box:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 14px var(--card-glow);
+    }
+
+    .fan-telemetry-val {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .fan-telemetry-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-status-normal {
+      padding: 2px 8px;
+      background: rgba(0, 245, 212, 0.12);
+      border: 1px solid var(--secondary);
+      border-radius: 4px;
+      color: var(--secondary);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .badge-status-active {
+      padding: 2px 8px;
+      background: rgba(255, 75, 75, 0.18);
+      border: 1px solid #FF5252;
+      border-radius: 4px;
+      color: #FF5252;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .test-fan-btn {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .test-fan-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--secondary);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .slider-group {
+      margin-bottom: 16px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .slider-val-badge {
+      color: var(--secondary);
+      font-family: var(--font-display);
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--pill-bg);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--secondary);
+    }
+
+    /* ================= TAB 4: OTIMIZAÇÕES WINDOWS & SWAP ================= */
+    .optimizer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .opt-hero-card {
+      background: linear-gradient(135deg, rgba(20, 30, 50, 0.72), rgba(10, 16, 26, 0.82)) !important;
+      border: 1px solid var(--secondary) !important;
+      box-shadow: 0 0 20px rgba(0, 213, 255, 0.25);
+      padding: 14px 18px;
+    }
+
+    .btn-hero-apply {
+      background: var(--secondary) !important;
+      color: #070B12 !important;
+      font-weight: 800 !important;
+      font-size: 13px !important;
+      padding: 10px 18px !important;
+      box-shadow: 0 0 16px var(--secondary);
+      border: none !important;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .btn-hero-apply:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 22px var(--secondary);
+    }
+
+    .optimizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .opt-desc-box {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--subtext);
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .opt-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      width: 100%;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .opt-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.32);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      transition: border-color 0.2s;
+    }
+
+    .opt-item:hover {
+      border-color: var(--secondary);
+    }
+
+    .opt-item-icon {
+      font-size: 18px;
+      width: 26px;
+      text-align: center;
+    }
+
+    .opt-item-info {
+      flex: 1;
+    }
+
+    .opt-item-title {
+      font-weight: 700;
+      font-size: 12.5px;
+      color: var(--text);
+    }
+
+    .opt-item-sub {
+      font-size: 10px;
+      color: var(--subtext);
+      margin-top: 2px;
+    }
+
+    .opt-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .badge-active {
+      background: rgba(0, 230, 118, 0.2);
+      color: #00E676;
+      border: 1px solid rgba(0, 230, 118, 0.4);
+    }
+
+    .badge-inactive {
+      background: rgba(255, 23, 68, 0.15);
+      color: #FF5252;
+      border: 1px solid rgba(255, 23, 68, 0.3);
+    }
+
+    .badge-pending {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--subtext);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Sub-navegação interna e Interface Gráfica do Win11Debloat */
+    .debloat-subnav {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    .debloat-subnav-btn {
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--subtext);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .debloat-subnav-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+
+    .debloat-subnav-btn.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 12px var(--secondary);
+    }
+
+    .debloat-section-view {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .debloat-section-view.active {
+      display: block;
+    }
+
+    .debloat-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+    }
+
+    .debloat-apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .debloat-app-card {
+      background: rgba(15, 22, 34, 0.65);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+
+    .debloat-app-card:hover {
+      border-color: var(--secondary);
+      background: rgba(26, 38, 58, 0.85);
+    }
+
+    .debloat-app-card.selected {
+      border-color: #FF5252;
+      background: rgba(255, 82, 82, 0.1);
+    }
+
+    .debloat-app-card input[type=checkbox] {
+      margin-top: 3px;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      accent-color: #FF5252;
+    }
+
+    .debloat-app-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .debloat-app-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .debloat-app-desc {
+      font-size: 9.5px;
+      color: var(--subtext);
+    }
+
+    .debloat-cat-badge {
+      font-size: 8px;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cat-sponsored { background: rgba(255, 75, 75, 0.2); color: #FF5252; border: 1px solid rgba(255, 75, 75, 0.4); }
+    .cat-microsoft { background: rgba(0, 210, 255, 0.15); color: #00D2FF; border: 1px solid rgba(0, 210, 255, 0.3); }
+    .cat-xbox { background: rgba(16, 124, 65, 0.25); color: #43D17A; border: 1px solid rgba(16, 124, 65, 0.5); }
+    .cat-communication { background: rgba(157, 78, 221, 0.2); color: #C77DFF; border: 1px solid rgba(157, 78, 221, 0.4); }
+
+    .debloat-tweaks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .debloat-tweak-card {
+      background: rgba(0, 0, 0, 0.32);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .debloat-tweak-card:hover {
+      border-color: var(--secondary);
+    }
+
+    .debloat-tweak-card input[type=checkbox] {
+      margin-top: 2px;
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--secondary);
+    }
+
+    .opt-btn-sm {
+      padding: 5px 10px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .opt-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(14, 22, 36, 0.95);
+      border: 1px solid var(--secondary);
+      box-shadow: 0 0 20px var(--card-glow);
+      backdrop-filter: blur(12px);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 12.5px;
+      color: #FFFFFF;
+      z-index: 10000;
+      animation: fadeInToast 0.3s ease;
+      white-space: pre-line;
+    }
+
+    @keyframes fadeInToast {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================= BARRA FLUTUANTE HUD ELEGANTE ================= */
+    .hud-floating-bar {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(8, 14, 22, 0.70);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: 4px 8px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55);
+      transition: all 0.25s ease;
+    }
+
+    .hud-floating-bar:hover {
+      background: rgba(8, 14, 22, 0.92);
+      border-color: var(--secondary);
+      box-shadow: 0 0 20px var(--card-glow);
+    }
+
+    .hud-icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hud-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.12);
+      color: #FFFFFF;
+    }
+
+    .hud-icon-btn.btn-gear {
+      background: var(--secondary);
+      color: #070B12;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow: 0 0 14px var(--secondary);
+      animation: gearPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gearPulse {
+      0%, 100% { box-shadow: 0 0 10px var(--secondary); transform: scale(1); }
+      50% { box-shadow: 0 0 20px var(--secondary); transform: scale(1.06); }
+    }
+
+    .hud-icon-btn.btn-close-x:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+    }
+
+    /* ================= PÍLULA DE ZOOM CUSTOMIZÁVEL NO HUD ================= */
+    .hud-zoom-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 1px 4px;
+      gap: 3px;
+      height: 28px;
+      transition: all 0.2s ease;
+    }
+
+    .hud-zoom-pill:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px var(--card-glow);
+    }
+
+    .hud-zoom-btn {
+      background: transparent;
+      border: none;
+      color: var(--secondary);
+      font-size: 13px;
+      font-weight: 900;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .hud-zoom-btn:hover {
+      background: var(--card-glow);
+      color: #FFFFFF;
+      transform: scale(1.15);
+    }
+
+    .hud-zoom-text {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text);
+      min-width: 38px;
+      text-align: center;
+      cursor: pointer;
+      padding: 1px 3px;
+      border-radius: 4px;
+      user-select: none;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+    }
+
+    .hud-zoom-text:hover {
+      color: var(--secondary);
+      text-shadow: 0 0 8px var(--card-glow);
+    }
+
+    /* TOAST DE ZOOM FLUTUANTE (FEEDBACK VISUAL AO USAR CTRL+SCROLL) */
+    .zoom-hud-indicator {
+      position: fixed;
+      top: 60px;
+      right: 24px;
+      background: rgba(5, 10, 16, 0.88);
+      border: 1px solid var(--secondary);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 16px var(--card-glow);
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transform: translateY(-8px) scale(0.95);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .zoom-hud-indicator.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .hud-admin-pill {
+      position: fixed;
+      top: 14px;
+      left: 18px;
+      background: rgba(255, 23, 68, 0.85);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 14px rgba(255, 23, 68, 0.6);
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s;
+    }
+
+    .hud-admin-pill:hover {
+      transform: scale(1.05);
+      background: #FF1744;
+    }
+
+    /* ================= MODAL DE CONFIGURAÇÕES (ENGRENAGEM) ================= */
+    .settings-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 8, 14, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .settings-modal-overlay.open {
+      display: flex;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .settings-modal-window {
+      background: rgba(11, 17, 28, 0.94);
+      border: 1px solid var(--secondary);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 28px var(--card-glow);
+      border-radius: 14px;
+      width: 92%;
+      max-width: 920px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .settings-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(7, 11, 18, 0.85);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .settings-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+    }
+
+    .settings-sub {
+      font-size: 10.5px;
+      color: var(--subtext);
+      margin-top: 1px;
+    }
+
+    .settings-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .settings-close-btn:hover {
+      background: #DC2626;
+      border-color: #DC2626;
+      color: #FFFFFF;
+    }
+
+    .settings-tabs-bar {
+      display: flex;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(14, 20, 32, 0.55);
+      border-bottom: 1px solid var(--card-border);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .settings-tabs-bar::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    .modal-tab-btn {
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--subtext);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .modal-tab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .modal-tab-btn.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 14px var(--secondary);
+    }
+
+    .settings-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+
+    .settings-modal-body::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .settings-modal-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .settings-modal-body::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .settings-modal-body::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+    }
+
+    .modal-tab-content {
+      display: none;
+    }
+
+    .modal-tab-content.active {
+      display: block;
+    }
+
+    /* GRID VISUAL DOS TEMAS DE JOGOS NA MODAL */
+    .themes-grid-modal {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 12px;
+    }
+
+    .theme-card-item {
+      background: rgba(15, 22, 34, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-card-item:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 0 16px var(--card-glow);
+      transform: translateY(-2px);
+    }
+
+    .theme-card-item.active {
+      border-color: var(--secondary);
+      box-shadow: 0 0 20px var(--secondary);
+      background: rgba(26, 38, 58, 0.88);
+    }
+
+    .theme-card-badge {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--subtext);
+      width: fit-content;
+      margin-bottom: 6px;
+    }
+
+    .theme-card-item.active .theme-card-badge {
+      background: var(--secondary);
+      color: #070B12;
+    }
+
+    .theme-card-name {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .theme-card-desc {
+      font-size: 10px;
+      color: var(--subtext);
+      margin-top: 4px;
+    }
+
+    /* FILTROS DE CATEGORIA DE TEMAS */
+    .theme-category-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .theme-cat-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--subtext);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .theme-cat-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+
+    .theme-cat-btn.active {
+      background: var(--secondary);
+      color: #070B12;
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
+    }
+
+    /* PAINEL DE PERSONALIZAÇÃO & VERSATILIDADE DOS TEMAS */
+    .theme-customizer-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: rgba(14, 20, 32, 0.65);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .theme-sliders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .theme-sliders-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .color-presets-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .color-swatch-btn:hover {
+      transform: scale(1.22);
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    /* ================= MODO TELA CHEIA (FULLSCREEN) ================= */
+    body.is-fullscreen header {
+      display: none;
+    }
+
+    body.is-fullscreen .admin-warning-bar {
+      display: none;
+    }
+
+    body.is-fullscreen main {
+      padding: 0;
+    }
+
+    .fs-exit-floating {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 14px var(--secondary);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="theme-cs2 animated-bg-active">
+
+  <!-- CANVAS COM ANIMAÇÕES TEMÁTICAS AO VIVO (PARTÍCULAS / EFEITOS DINÂMICOS) -->
+  <canvas id="animated-bg-canvas"></canvas>
+
+  <div class="scanline-overlay"></div>
+
+  <!-- BARRA FLUTUANTE HUD ELEGANTE (SUPERIOR DIREITA - CONTROLE & ENGRENAGEM) -->
+  <div class="hud-floating-bar">
+    <button class="hud-icon-btn btn-gear" onclick="openSettingsModal('themes')" title="⚙️ Configurações, Temas & Otimizações">⚙️</button>
+    <button class="hud-icon-btn" onclick="toggleHudMode()" id="btn-quick-hud" title="📊 Alternar Detalhes / Foco">📊</button>
+
+    <!-- PÍLULA DE ZOOM DIRETO NO TOPO (CUSTOMIZÁVEL) -->
+    <div class="hud-zoom-pill" title="Zoom da Interface (Clique +/- para ajustar, ou use Ctrl + Scroll)">
+      <button class="hud-zoom-btn" onclick="adjustZoom(-5)" title="Diminuir Zoom (Ctrl -)">−</button>
+      <span id="hud-zoom-text" class="hud-zoom-text" onclick="resetZoom()" title="Clique para Restaurar 100% (Ctrl 0)">100%</span>
+      <button class="hud-zoom-btn" onclick="adjustZoom(5)" title="Aumentar Zoom (Ctrl +)">+</button>
+    </div>
+
+    <button class="hud-icon-btn" onclick="toggleFullscreen()" title="🔲 Tela Cheia (F11)">🔲</button>
+    <button class="hud-icon-btn" onclick="pywebview.api.minimize_to_tray()" title="📥 Minimizar na Bandeja">📥</button>
+    <button class="hud-icon-btn btn-close-x" onclick="pywebview.api.close_app()" title="✕ Fechar">✕</button>
+  </div>
+
+  <!-- INDICADOR FLUTUANTE DE ZOOM (FEEDBACK INSTANTÂNEO) -->
+  <div id="zoom-indicator" class="zoom-hud-indicator">🔍 Zoom: 100%</div>
+
+  <!-- AVISO SUTIL DE ADMINISTRADOR FLUTUANTE (SE NÃO-ADMIN) -->
+  <div id="admin-warning-badge" class="hud-admin-pill" style="display: none;" onclick="requestAdminElevation()" title="Modo Leitura: Clique para Executar como Administrador">
+    🛡️ Executar como Administrador
+  </div>
+
+  <!-- BOTÃO FLUTUANTE PARA SAIR DO FULLSCREEN -->
+  <button class="fs-exit-floating" onclick="toggleFullscreen()">🗗 Sair da Tela Cheia (ESC ou F11)</button>
+
+  <main>
+    <!-- ================= TAB 1: SENSORPANEL LCD TURING COM ESTATÍSTICAS COMPLETAS ================= -->
+    <div id="tab-turing" class="tab-content active">
+      <div class="turing-grid">
+        
+        <!-- CARD HUD GAME STATS (AO VIVO QUANDO UM JOGO É DETECTADO) -->
+        <div id="hud-game-card" class="hud-game-card" style="display: none;">
+          <div class="game-hud-top-bar">
+            <div class="game-hud-title-wrap">
+              <span class="game-hud-live-dot"></span>
+              <span class="game-hud-icon">🎮</span>
+              <span id="game-hud-title" class="game-hud-name">Counter-Strike 2</span>
+              <span id="game-hud-exe" class="game-hud-exe-pill">cs2.exe</span>
+            </div>
+            <div class="game-hud-timer-badge">
+              <span>⏱️ SESSÃO:</span>
+              <span id="game-hud-session" class="game-hud-timer-val">00:00:00</span>
+            </div>
+          </div>
+          
+          <div class="game-hud-stats-row">
+            <!-- FPS Principal -->
+            <div class="game-stat-box fps-box">
+              <div class="game-stat-header">TAXA DE QUADROS</div>
+              <div class="game-stat-main">
+                <span id="game-hud-fps" class="game-val-giant">165</span>
+                <span class="game-stat-unit">FPS</span>
+              </div>
+              <div class="game-stat-footer">
+                <span class="game-hud-live-dot" style="width:6px;height:6px;"></span>
+                <span id="game-hud-status-badge">DESEMPENHO IDEAL</span>
+              </div>
+            </div>
+
+            <!-- Frame Time (ms) -->
+            <div class="game-stat-box">
+              <div class="game-stat-header">FRAME TIME</div>
+              <div class="game-stat-main">
+                <span id="game-hud-frametime" class="game-val-mid">6.06</span>
+                <span class="game-stat-unit">ms</span>
+              </div>
+              <div class="game-stat-footer">
+                <span id="game-hud-frametime-quality" class="game-tag-success">⚡ FLUIDEZ MÁXIMA</span>
+              </div>
+            </div>
+
+            <!-- 1% Low FPS -->
+            <div class="game-stat-box">
+              <div class="game-stat-header">1% LOW (ESTABILIDADE)</div>
+              <div class="game-stat-main">
+                <span id="game-hud-1pct" class="game-val-mid">132</span>
+                <span class="game-stat-unit">FPS</span>
+              </div>
+              <div class="game-stat-footer">
+                <span id="game-hud-stutter-badge" class="game-tag-info">🛡️ 0% STUTTER</span>
+              </div>
+            </div>
+
+            <!-- Gráfico de Frame Time em Tempo Real (SVG Polyline) -->
+            <div class="game-stat-box graph-box">
+              <div class="game-stat-header">
+                <span>CONSISTÊNCIA FRAME TIME</span>
+                <span id="game-hud-graph-val" class="graph-live-tag">6.0 ms</span>
+              </div>
+              <div class="game-frametime-graph-container">
+                <svg id="game-frametime-svg" viewBox="0 0 200 44" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="ftGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <line x1="0" y1="22" x2="200" y2="22" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
+                  <polygon id="game-frametime-svg-poly" points="0,44 200,44" fill="url(#ftGrad)" />
+                  <polyline id="game-frametime-svg-line" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,22 200,22" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINHA SUPERIOR: CPU MOD & GPU MOD -->
+        <div class="turing-row-top">
+          
+          <!-- 1. CPU MOD (PROCESSADOR) -->
+          <div class="turing-card">
+            <div class="card-header-title">
+              <span>⚙️</span> CPU MOD • RYZEN 5 5500
+            </div>
+            <div class="card-body-horizontal">
+              <div class="gauge-wrapper">
+                <div class="gauge-radar-scanner"></div>
+                <svg class="gauge-svg" viewBox="0 0 120 120">
+                  <defs>
+                    <pattern id="pat-cpu-galaxy" patternUnits="userSpaceOnUse" width="120" height="120">
+                      <image href="images/dial_cpu_galaxy.png" x="12" y="12" width="96" height="96" preserveAspectRatio="xMidYMid slice"/>
+                    </pattern>
+                  </defs>
+                  <circle cx="60" cy="60" r="54" class="gauge-tech-ring ring-cw"></circle>
+                  <circle cx="60" cy="60" r="48" fill="url(#pat-cpu-galaxy)" class="gauge-bg-circle"></circle>
+                  <circle cx="60" cy="60" r="42" class="gauge-track-arc" stroke-dasharray="200" stroke-dashoffset="50"></circle>
+                  <circle id="gauge-cpu-fill" cx="60" cy="60" r="42" class="gauge-fill-arc" stroke-dasharray="200" stroke-dashoffset="80"></circle>
+                </svg>
+                <div class="gauge-center-content">
+                  <div class="gauge-icon">⚡</div>
+                  <div id="val-cpu-load" class="gauge-value">45</div>
+                  <div class="gauge-label">CPU %</div>
+                </div>
+              </div>
+
+              <div class="metrics-col">
+                <div class="pill-metric-row">
+                  <div class="pill-track">
+                    <div id="pill-cpu-temp" class="pill-fill" style="width: 45%;"></div>
+                  </div>
+                  <div class="pill-label-val">
+                    <span class="pill-tag">TEMP</span> <span id="val-cpu-temp">45°</span>
+                  </div>
+                </div>
+
+                <div class="pill-metric-row">
+                  <div class="pill-track">
+                    <div id="pill-cpu-clock" class="pill-fill" style="width: 72%;"></div>
+                  </div>
+                  <div class="pill-label-val">
+                    <span class="pill-tag">CLOCK</span> <span id="val-cpu-clock">3.6G</span>
+                  </div>
+                </div>
+
+                <!-- Grid de Telemetria Organizada CPU -->
+                <div class="hud-metric-grid">
+                  <div class="hud-cell"><span class="cell-lbl">PICO</span><span class="cell-val" id="val-cpu-max-temp">48°</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">TDP</span><span class="cell-val" id="val-cpu-power">35 W</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">CORES</span><span class="cell-val">6C / 12T</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">BOOST</span><span class="cell-val">4.2 GHz</span></div>
+                </div>
+
+                <div class="hud-extra-info" style="font-size: 9.5px; color: var(--subtext); margin-top: 2px; display: flex; justify-content: space-between;">
+                  <span>FAN CPU: <b id="val-cpu-fan-sub" style="color: var(--secondary);">1250 RPM</b></span>
+                  <span>GABINETE: <b id="val-sys-fan-sub" style="color: #00F5D4;">1100 RPM</b></span>
+                </div>
+
+                <div class="cpu-cores-meter" title="Uso dos 6 núcleos físicos">
+                  <div class="core-bar-track"><div id="core-bar-0" class="core-bar-fill"></div></div>
+                  <div class="core-bar-track"><div id="core-bar-1" class="core-bar-fill"></div></div>
+                  <div class="core-bar-track"><div id="core-bar-2" class="core-bar-fill"></div></div>
+                  <div class="core-bar-track"><div id="core-bar-3" class="core-bar-fill"></div></div>
+                  <div class="core-bar-track"><div id="core-bar-4" class="core-bar-fill"></div></div>
+                  <div class="core-bar-track"><div id="core-bar-5" class="core-bar-fill"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. GPU MOD (PLACA DE VÍDEO) -->
+          <div class="turing-card">
+            <div class="card-header-title">
+              <span>📺</span> GPU MOD • RTX 5060 Ti
+            </div>
+            <div class="card-body-horizontal">
+              <div class="gauge-wrapper">
+                <div class="gauge-radar-scanner"></div>
+                <svg class="gauge-svg" viewBox="0 0 120 120">
+                  <defs>
+                    <pattern id="pat-gpu-space" patternUnits="userSpaceOnUse" width="120" height="120">
+                      <image href="images/dial_gpu_space.png" x="12" y="12" width="96" height="96" preserveAspectRatio="xMidYMid slice"/>
+                    </pattern>
+                  </defs>
+                  <circle cx="60" cy="60" r="54" class="gauge-tech-ring ring-ccw"></circle>
+                  <circle cx="60" cy="60" r="48" fill="url(#pat-gpu-space)" class="gauge-bg-circle"></circle>
+                  <circle cx="60" cy="60" r="42" class="gauge-track-arc" stroke-dasharray="200" stroke-dashoffset="50"></circle>
+                  <circle id="gauge-gpu-fill" cx="60" cy="60" r="42" class="gauge-fill-arc" stroke-dasharray="200" stroke-dashoffset="75"></circle>
+                </svg>
+                <div class="gauge-center-content">
+                  <div class="gauge-icon">🎮</div>
+                  <div id="val-gpu-util" class="gauge-value">32</div>
+                  <div class="gauge-label">GPU %</div>
+                </div>
+              </div>
+
+              <div class="metrics-col">
+                <div class="pill-metric-row">
+                  <div class="pill-track">
+                    <div id="pill-gpu-temp" class="pill-fill" style="width: 42%;"></div>
+                  </div>
+                  <div class="pill-label-val">
+                    <span class="pill-tag">TEMP</span> <span id="val-gpu-temp">42°</span>
+                  </div>
+                </div>
+
+                <div class="pill-metric-row">
+                  <div class="pill-track">
+                    <div id="pill-gpu-vram" class="pill-fill" style="width: 32%;"></div>
+                  </div>
+                  <div class="pill-label-val">
+                    <span id="val-gpu-vram">2505 M</span>
+                  </div>
+                </div>
+
+                <!-- Grid de Telemetria Organizada GPU -->
+                <div class="hud-metric-grid">
+                  <div class="hud-cell"><span class="cell-lbl">PICO</span><span class="cell-val" id="val-gpu-max-temp">45°</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">POTÊNCIA</span><span class="cell-val" id="val-gpu-power">26 W</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">CLOCK</span><span class="cell-val" id="val-gpu-clock">1905 MHz</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">BARRAMENTO</span><span class="cell-val" id="val-gpu-pcie">PCIe Gen 3</span></div>
+                </div>
+
+                <div class="hud-extra-info" style="font-size: 9.5px; color: var(--subtext); margin-top: 2px; display: flex; justify-content: space-between;">
+                  <span>VRAM: <b id="val-gpu-vram-sub" style="color: var(--text);">2.5 / 8.2 GB (31%)</b></span>
+                  <span>FAN RTX: <b id="val-gpu-fan-sub" style="color: var(--secondary);">0% • 0 RPM</b></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- LINHA INFERIOR: RAM | HDD & NETWORK | DATE & TIME -->
+        <div class="turing-row-bottom">
+          
+          <!-- 3. RAM (MEMÓRIA) -->
+          <div class="turing-card">
+            <div class="card-header-title">
+              <span>🔋</span> RAM & VIRTUAL
+            </div>
+            <div class="card-body-horizontal" style="gap: 8px;">
+              <div class="gauge-wrapper">
+                <div class="gauge-radar-scanner"></div>
+                <svg class="gauge-svg" viewBox="0 0 120 120">
+                  <defs>
+                    <pattern id="pat-ram-circuit" patternUnits="userSpaceOnUse" width="120" height="120">
+                      <image href="images/dial_ram_circuit.png" x="12" y="12" width="96" height="96" preserveAspectRatio="xMidYMid slice"/>
+                    </pattern>
+                  </defs>
+                  <circle cx="60" cy="60" r="54" class="gauge-tech-ring ring-cw"></circle>
+                  <circle cx="60" cy="60" r="48" fill="url(#pat-ram-circuit)" class="gauge-bg-circle"></circle>
+                  <circle cx="60" cy="60" r="42" class="gauge-track-arc" stroke-dasharray="200" stroke-dashoffset="50"></circle>
+                  <circle id="gauge-ram-fill" cx="60" cy="60" r="42" class="gauge-fill-arc" stroke-dasharray="200" stroke-dashoffset="90"></circle>
+                </svg>
+                <div class="gauge-center-content">
+                  <div class="gauge-icon">💾</div>
+                  <div id="val-ram-pct" class="gauge-value">37</div>
+                  <div class="gauge-label">RAM %</div>
+                </div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 3px;">
+                <div id="val-ram-gb" style="font-size: 10.5px; font-weight: 700; color: var(--text);">8.9 / 24.0 GB</div>
+                <div class="hud-metric-grid" style="grid-template-columns: 1fr; gap: 2px;">
+                  <div class="hud-cell"><span class="cell-lbl">LIVRE</span><span class="cell-val" id="val-ram-avail">15.1 GB</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">SWAP</span><span class="cell-val" id="val-ram-swap">0.1 GB</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. HDD/SSD & NETWORK (ARMAZENAMENTO E REDE) -->
+          <div class="turing-card">
+            <div class="card-header-title">
+              <span>💽</span> STORAGE & NETWORK
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 3px;">
+              <div id="disks-container" class="disks-scroll-box">
+                <div class="disk-row">
+                  <span class="disk-letter">C:</span>
+                  <span class="disk-badge badge-ssd">SSD</span>
+                  <div class="pill-track disk-track">
+                    <div id="pill-disk" class="pill-fill fill-ssd" style="width: 12%;"></div>
+                  </div>
+                  <span id="val-disk" class="disk-stats">12% 56/465G</span>
+                </div>
+              </div>
+              
+              <div style="font-size: 8.5px; color: var(--subtext); display: flex; justify-content: space-between; margin-top: 1px;">
+                <span>DISCO I/O:</span>
+                <span id="val-disk-io" style="color: var(--secondary); font-family: var(--font-display); font-weight: 700;">L: 0.2M • E: 1.4M</span>
+              </div>
+
+              <div class="net-rates-box" style="margin-top: 1px;">
+                <div class="net-rate-item net-down">
+                  <span id="val-net-down">↓ 80.0 M</span>
+                </div>
+                <div class="net-rate-item net-up">
+                  <span id="val-net-up">↑ 20.0 M</span>
+                </div>
+              </div>
+
+              <div class="hud-extra-info" style="font-size: 8.5px; color: var(--subtext); text-align: center;">
+                SESSÃO: <b id="val-net-session" style="color: var(--text);">↓ 4.2 GB • ↑ 850 MB</b>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. DATE & TIME (DATA, HORA E SISTEMA) -->
+          <div class="turing-card">
+            <div class="card-header-title">
+              <span>📅</span> SYSTEM UPTIME & CLOCK
+            </div>
+            <div class="date-time-box">
+              <div id="val-date" class="clock-date-val">2026/10/28</div>
+              <div id="val-time" class="clock-time-val">23:58:42</div>
+              <div class="hud-metric-grid hud-extra-info" style="width: 100%; gap: 2px;">
+                <div class="hud-cell"><span class="cell-lbl">UPTIME</span><span class="cell-val" id="val-uptime">6h 19m</span></div>
+                <div class="hud-cell"><span class="cell-lbl">PROCS</span><span class="cell-val" id="val-procs">206</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MENSAGEM DE FEEDBACK / TOAST -->
+  <div id="opt-toast" class="opt-toast" style="display: none;"></div>
+
+  <!-- ================= MODAL CENTRAL DE CONFIGURAÇÕES (ENGRENAGEM) ================= -->
+  <div id="settings-modal" class="settings-modal-overlay" onclick="onModalOverlayClick(event)">
+    <div class="settings-modal-window">
+      <div class="settings-modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">⚙️</span>
+          <div>
+            <div class="settings-title">AEGIS • PAINEL DE CONFIGURAÇÕES & CONTROLE</div>
+            <div class="settings-sub">RTX 5060 Ti • RYZEN 5 5500 • ASROCK B450M • OTIMIZAÇÕES WINDOWS</div>
+          </div>
+        </div>
+
+
+        <button class="settings-close-btn" onclick="closeSettingsModal()">✕ Fechar (ESC)</button>
+      </div>
+
+      <!-- TABS INTERNAS DA MODAL -->
+      <div class="settings-tabs-bar">
+        <button class="modal-tab-btn active" data-tab="themes" onclick="switchModalTab('themes')">🎮 Temas & Wallpapers</button>
+        <button class="modal-tab-btn" data-tab="gpu" onclick="switchModalTab('gpu')">⚡ Fans da GPU (RTX 5060 Ti)</button>
+        <button class="modal-tab-btn" data-tab="cpu" onclick="switchModalTab('cpu')">🖥️ Placa-Mãe & Fans</button>
+        <button class="modal-tab-btn" data-tab="optimizer" onclick="switchModalTab('optimizer')">🚀 Otimizações Windows & Swap</button>
+        <button class="modal-tab-btn" data-tab="debloat" onclick="switchModalTab('debloat')">🧹 Debloat Nativo Win 11</button>
+      </div>
+
+      <!-- CONTEÚDO DAS ABAS NA MODAL -->
+      <div class="settings-modal-body">
+        
+        <!-- 1. ABA DE TEMAS & WALLPAPERS -->
+        <div id="modal-tab-themes" class="modal-tab-content active">
+          
+          <!-- BARRA DE CATEGORIAS / FILTRO DE TEMAS -->
+          <div class="theme-category-bar">
+            <button class="theme-cat-btn active" data-cat="all" onclick="filterThemeCategory('all')">🔥 Todos os Temas (20)</button>
+            <button class="theme-cat-btn" data-cat="games" onclick="filterThemeCategory('games')">🎮 Jogos Famosos (10)</button>
+            <button class="theme-cat-btn" data-cat="styles" onclick="filterThemeCategory('styles')">🌌 Estilos & Hardware (9)</button>
+            <button class="theme-cat-btn" data-cat="custom" onclick="filterThemeCategory('custom')">🖼️ Personalizado</button>
+          </div>
+
+          <!-- GRID DOS TEMAS -->
+          <div class="themes-grid-modal" id="themes-grid-container">
+            
+            <!-- JOGOS -->
+            <div class="theme-card-item active" data-theme="cs2" data-category="games" onclick="setTheme('cs2')">
+              <span class="theme-card-badge">TACTICAL FPS</span>
+              <div class="theme-card-name">💣 Counter-Strike 2</div>
+              <div class="theme-card-desc">Dust II • Laranja Tático & Preto</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="valorant" data-category="games" onclick="setTheme('valorant')">
+              <span class="theme-card-badge">RIOT GAMES</span>
+              <div class="theme-card-name">🎯 Valorant</div>
+              <div class="theme-card-desc">Brimstone & Viper • Ciano Neon</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="lol" data-category="games" onclick="setTheme('lol')">
+              <span class="theme-card-badge">MOBA ESPORTS</span>
+              <div class="theme-card-name">⚔️ League of Legends</div>
+              <div class="theme-card-desc">Summoner's Rift • Dourado Hextech</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="gta" data-category="games" onclick="setTheme('gta')">
+              <span class="theme-card-badge">OPEN WORLD</span>
+              <div class="theme-card-name">🌴 GTA V / Vice City</div>
+              <div class="theme-card-desc">Los Santos Sunset • Rosa & Violeta 80s</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="warzone" data-category="games" onclick="setTheme('warzone')">
+              <span class="theme-card-badge">BATTLE ROYALE</span>
+              <div class="theme-card-name">🪖 CoD Warzone</div>
+              <div class="theme-card-desc">Urzikstan • Verde Militar / HUD</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="fortnite" data-category="games" onclick="setTheme('fortnite')">
+              <span class="theme-card-badge">EPIC GAMES</span>
+              <div class="theme-card-name">🦹 Fortnite BR</div>
+              <div class="theme-card-desc">Battle Bus • Roxo Neon & Azul Elétrico</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="minecraft" data-category="games" onclick="setTheme('minecraft')">
+              <span class="theme-card-badge">SANDBOX</span>
+              <div class="theme-card-name">⛏️ Minecraft</div>
+              <div class="theme-card-desc">Overworld • Verde Esmeralda & Terra</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="eldenring" data-category="games" onclick="setTheme('eldenring')">
+              <span class="theme-card-badge">SOULSLIKE</span>
+              <div class="theme-card-name">💍 Elden Ring</div>
+              <div class="theme-card-desc">Erdtree Gold • Dourado Místico</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="cyberpunk" data-category="games" onclick="setTheme('cyberpunk')">
+              <span class="theme-card-badge">CD PROJEKT RED</span>
+              <div class="theme-card-name">🦾 Cyberpunk 2077</div>
+              <div class="theme-card-desc">Night City • Amarelo Chooh2 & Ciano</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="apex" data-category="games" onclick="setTheme('apex')">
+              <span class="theme-card-badge">RESPAWN</span>
+              <div class="theme-card-name">🏆 Apex Legends</div>
+              <div class="theme-card-desc">World's Edge • Vermelho Predador</div>
+            </div>
+
+            <!-- ESTILOS VISUAIS & HARDWARE -->
+            <div class="theme-card-item" data-theme="synthwave" data-category="styles" onclick="setTheme('synthwave')">
+              <span class="theme-card-badge" style="background: rgba(255, 0, 127, 0.2); color: #FF007F;">RETROWAVE</span>
+              <div class="theme-card-name">🕹️ Synthwave 80s</div>
+              <div class="theme-card-desc">Grid Neon • Magenta & Ciano Laser</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="matrix" data-category="styles" onclick="setTheme('matrix')">
+              <span class="theme-card-badge" style="background: rgba(0, 255, 65, 0.2); color: #00FF41;">TERMINAL</span>
+              <div class="theme-card-name">🟢 Matrix Hacker</div>
+              <div class="theme-card-desc">Chuva de Código • Verde Fósforo</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="magma" data-category="styles" onclick="setTheme('magma')">
+              <span class="theme-card-badge" style="background: rgba(255, 61, 0, 0.2); color: #FF3D00;">VULCÂNICO</span>
+              <div class="theme-card-name">🔥 Magma RTX Fire</div>
+              <div class="theme-card-desc">Lava Incandescente • Laranja & Carmim</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="arctic" data-category="styles" onclick="setTheme('arctic')">
+              <span class="theme-card-badge" style="background: rgba(0, 229, 255, 0.2); color: #00E5FF;">CRYO BLIZZARD</span>
+              <div class="theme-card-name">❄️ Arctic Frost</div>
+              <div class="theme-card-desc">Tempestade Polar • Azul Gelo & Branco</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="eva" data-category="styles" onclick="setTheme('eva')">
+              <span class="theme-card-badge" style="background: rgba(157, 0, 255, 0.2); color: #D500F9;">MECHA ANIME</span>
+              <div class="theme-card-name">🟣 Evangelion Unit-01</div>
+              <div class="theme-card-desc">Tokyo-3 • Roxo Shinji & Verde Neon</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="gold" data-category="styles" onclick="setTheme('gold')">
+              <span class="theme-card-badge" style="background: rgba(255, 215, 0, 0.2); color: #FFD700;">LUXURY VIP</span>
+              <div class="theme-card-name">👑 Titanium Gold</div>
+              <div class="theme-card-desc">Acabamento Nobre • Ouro 24K & Âmbar</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="supercar" data-category="styles" onclick="setTheme('supercar')">
+              <span class="theme-card-badge" style="background: rgba(255, 23, 68, 0.2); color: #FF1744;">RACING COCKPIT</span>
+              <div class="theme-card-name">🏎️ Supercar Carbon</div>
+              <div class="theme-card-desc">Taquímetro • Fibra de Carbono & Vermelho</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="scifi" data-category="styles" onclick="setTheme('scifi')">
+              <span class="theme-card-badge" style="background: rgba(0, 210, 255, 0.2); color: #00D2FF;">STARSHIP HUD</span>
+              <div class="theme-card-name">🚀 Sci-Fi Cockpit</div>
+              <div class="theme-card-desc">Ponte de Nave • Azul Holográfico</div>
+            </div>
+
+            <div class="theme-card-item" data-theme="turing_classic" data-category="styles" onclick="setTheme('turing_classic')">
+              <span class="theme-card-badge">HARDWARE HUD</span>
+              <div class="theme-card-name">📱 Turing Classic</div>
+              <div class="theme-card-desc">Estilo Original • Painel 3.5" LCD</div>
+            </div>
+
+            <!-- CARD PERSONALIZADO -->
+            <div class="theme-card-item" data-theme="custom" data-category="custom" onclick="setTheme('custom')">
+              <span class="theme-card-badge" style="background: rgba(0, 229, 255, 0.3); color: var(--secondary);">WALLPAPER DO USUÁRIO</span>
+              <div class="theme-card-name">🖼️ Imagem do Seu PC</div>
+              <div class="theme-card-desc">Use sua própria foto/wallpaper como fundo</div>
+              <button class="action-btn" style="margin-top: 8px; font-size: 10.5px; padding: 4px 8px; justify-content: center;" onclick="event.stopPropagation(); pickCustomWallpaper();">
+                📂 Carregar Arquivo...
+              </button>
+            </div>
+
+          </div>
+
+          <!-- PAINEL DE PERSONALIZAÇÃO & VERSATILIDADE AO VIVO -->
+          <div class="theme-customizer-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <div style="font-family: var(--font-display); font-size: 13px; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 6px;">
+                <span>🎛️</span> AJUSTES FINOS & VERSATILIDADE VISUAL
+              </div>
+              <button class="action-btn opt-btn-sm" onclick="resetThemeCustomizations()">🔄 Restaurar Padrões</button>
+            </div>
+
+            <div class="theme-sliders-grid">
+              
+              <!-- SLIDER 1: OPACIDADE DOS CARDS -->
+              <div class="slider-group" style="margin-bottom: 0;">
+                <div class="slider-header">
+                  <span>OPACIDADE DOS CARDS</span>
+                  <span id="label-card-opacity" class="slider-val-badge">46%</span>
+                </div>
+                <input type="range" id="slider-card-opacity" min="15" max="85" value="46" oninput="onCardOpacityChange(this.value)">
+                <div style="font-size: 9.5px; color: var(--subtext); margin-top: 2px;">Menos opaco = Wallpaper mais visível</div>
+              </div>
+
+              <!-- SLIDER 2: DESFOQUE DO VIDRO (BLUR) -->
+              <div class="slider-group" style="margin-bottom: 0;">
+                <div class="slider-header">
+                  <span>DESFOQUE DO VIDRO (BLUR)</span>
+                  <span id="label-card-blur" class="slider-val-badge">8px</span>
+                </div>
+                <input type="range" id="slider-card-blur" min="0" max="24" value="8" oninput="onCardBlurChange(this.value)">
+                <div style="font-size: 9.5px; color: var(--subtext); margin-top: 2px;">0px = Totalmente nítido • 24px = Vidro fosco</div>
+              </div>
+
+              <!-- SLIDER 3: BRILHO DO WALLPAPER -->
+              <div class="slider-group" style="margin-bottom: 0;">
+                <div class="slider-header">
+                  <span>BRILHO DO WALLPAPER</span>
+                  <span id="label-bg-brightness" class="slider-val-badge">100%</span>
+                </div>
+                <input type="range" id="slider-bg-brightness" min="30" max="100" value="100" oninput="onBgBrightnessChange(this.value)">
+                <div style="font-size: 9.5px; color: var(--subtext); margin-top: 2px;">Ajuste o contraste entre fundo e telemetria</div>
+              </div>
+
+              <!-- SLIDER 4: ESCALA E ZOOM PERSONALIZÁVEL -->
+              <div class="slider-group" style="margin-bottom: 0;">
+                <div class="slider-header">
+                  <span>🔍 ESCALA / ZOOM DA INTERFACE</span>
+                  <span id="label-ui-zoom" class="slider-val-badge">100%</span>
+                </div>
+                <input type="range" id="slider-ui-zoom" min="50" max="180" step="5" value="100" oninput="setZoom(this.value)">
+                <div style="font-size: 9.5px; color: var(--subtext); margin-top: 2px;">50% (Compacto) a 180% (HUD Gigante)</div>
+              </div>
+
+            </div>
+
+            <!-- PRESETS DE ZOOM RÁPIDO -->
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding: 6px 10px; background: rgba(0,0,0,0.3); border-radius: 8px;">
+              <span style="font-size: 11px; font-weight: 700; color: var(--subtext);">PRESETS DE ZOOM:</span>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(70)">70% Foco Fundo</button>
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(85)">85% Compacto</button>
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(100)">100% Padrão</button>
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(115)">115% Confortável</button>
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(130)">130% Painel LCD</button>
+                <button class="theme-chip" style="padding: 2px 8px; font-size: 10px;" onclick="setZoom(150)">150% Grande</button>
+              </div>
+            </div>
+
+            <!-- LINHA DE CORES DE DESTAQUE, ANIMAÇÕES & SCANLINES -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 4px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08);">
+              
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="font-size: 11px; font-weight: 700; color: var(--subtext);">COR NEON DE DESTAQUE:</span>
+                <div class="color-presets-row">
+                  <div class="color-swatch-btn" style="background: #00F5D4;" onclick="applyCustomAccent('#00F5D4')" title="Ciano Cyber"></div>
+                  <div class="color-swatch-btn" style="background: #9D00FF;" onclick="applyCustomAccent('#9D00FF')" title="Roxo Neon"></div>
+                  <div class="color-swatch-btn" style="background: #00FF41;" onclick="applyCustomAccent('#00FF41')" title="Verde Matrix / Razer"></div>
+                  <div class="color-swatch-btn" style="background: #FF1744;" onclick="applyCustomAccent('#FF1744')" title="Vermelho ROG"></div>
+                  <div class="color-swatch-btn" style="background: #C8AA6E;" onclick="applyCustomAccent('#C8AA6E')" title="Dourado Hextech"></div>
+                  <div class="color-swatch-btn" style="background: #FF6D00;" onclick="applyCustomAccent('#FF6D00')" title="Laranja TUF Gaming"></div>
+                  <input type="color" id="picker-custom-color" value="#00F5D4" onchange="applyCustomAccent(this.value)" style="width: 28px; height: 28px; border: none; background: transparent; cursor: pointer; border-radius: 4px;" title="Seletor de cor livre">
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <button id="btn-toggle-animated-bg" class="action-btn opt-btn-sm" style="border-color: var(--secondary);" onclick="toggleAnimatedBg()">
+                  ✨ Fundo Animado: Ativado
+                </button>
+                <button id="btn-toggle-scanlines" class="action-btn opt-btn-sm" onclick="toggleScanlines()">
+                  📺 Scanlines CRT: Ligado
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 2. ABA FANS DA GPU (RTX 5060 Ti) -->
+        <div id="modal-tab-gpu" class="modal-tab-content">
+          <div class="fan-control-grid">
+            
+            <!-- CARD 1: SELEÇÃO DE PERFIS E VELOCIDADE DIRETA -->
+            <div class="turing-card">
+              <div class="card-header-title">🎮 PERFIS DE RESFRIAMENTO (RTX 5060 Ti)</div>
+              
+              <div class="profile-buttons-grid-v2">
+                <button class="profile-btn-v2 gpu-prof-btn" data-gpu-profile="quiet" onclick="setGpuProfile('quiet')">
+                  <div class="prof-icon">🔇</div>
+                  <div class="prof-content">
+                    <span class="prof-title">Silencioso / Eco</span>
+                    <span class="prof-desc">Zero-RPM até 60°C • 0 dB</span>
+                  </div>
+                </button>
+                
+                <button class="profile-btn-v2 gpu-prof-btn active" data-gpu-profile="balanced" onclick="setGpuProfile('balanced')">
+                  <div class="prof-icon">⚖️</div>
+                  <div class="prof-content">
+                    <span class="prof-title">Equilibrado</span>
+                    <span class="prof-desc">Zero-RPM até 50°C • Padrão</span>
+                  </div>
+                </button>
+                
+                <button class="profile-btn-v2 gpu-prof-btn" data-gpu-profile="performance" onclick="setGpuProfile('performance')">
+                  <div class="prof-icon">🚀</div>
+                  <div class="prof-content">
+                    <span class="prof-title">Gamer / Alta</span>
+                    <span class="prof-desc">Mínimo 50% ativo • &lt;65°C</span>
+                  </div>
+                </button>
+                
+                <button class="profile-btn-v2 gpu-prof-btn" data-gpu-profile="turbo" onclick="setGpuProfile('turbo')">
+                  <div class="prof-icon">⚡</div>
+                  <div class="prof-content">
+                    <span class="prof-title">Turbo 100%</span>
+                    <span class="prof-desc">Força Rotação Máxima</span>
+                  </div>
+                </button>
+                
+                <button class="profile-btn-v2 gpu-prof-btn" data-gpu-profile="manual" onclick="setGpuProfile('manual')">
+                  <div class="prof-icon">🎛️</div>
+                  <div class="prof-content">
+                    <span class="prof-title">Velocidade Fixa</span>
+                    <span class="prof-desc">Slider Manual Direto</span>
+                  </div>
+                </button>
+                
+                <button class="profile-btn-v2 gpu-prof-btn" data-gpu-profile="bios" onclick="setGpuProfile('bios')">
+                  <div class="prof-icon">🔒</div>
+                  <div class="prof-content">
+                    <span class="prof-title">VBIOS Auto</span>
+                    <span class="prof-desc">Padrão de Fábrica</span>
+                  </div>
+                </button>
+              </div>
+
+              <!-- CONTROLE MANUAL COM PRESETS DE CLIQUE RÁPIDO -->
+              <div class="slider-group" style="background: rgba(0,0,0,0.25); padding: 12px; border-radius: 8px; border: 1px solid var(--card-border); margin-top: 10px;">
+                <div class="slider-header">
+                  <span>VELOCIDADE MANUAL DA VENTOINHA</span>
+                  <span id="label-manual" class="slider-val-badge">50%</span>
+                </div>
+                <input type="range" id="slider-manual" min="30" max="100" value="50" oninput="onManualSpeedChange(this.value)">
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; gap: 4px;">
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(35)">35%</button>
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(45)">45%</button>
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(60)">60%</button>
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(75)">75%</button>
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(85)">85%</button>
+                  <button class="fan-preset-pill" onclick="applyQuickFanSpeed(100)">100%</button>
+                </div>
+              </div>
+
+              <!-- LIMITE ZERO-RPM -->
+              <div class="slider-group" style="margin-top: 10px;">
+                <div class="slider-header">
+                  <span>LIMITE DO ZERO-RPM (MODO SILENCIOSO)</span>
+                  <span id="label-zero-rpm" class="slider-val-badge">50°C</span>
+                </div>
+                <input type="range" id="slider-zero-rpm" min="40" max="65" value="50" oninput="onZeroRpmChange(this.value)">
+                <div style="font-size: 10.5px; color: var(--subtext); margin-top: 4px;">
+                  Abaixo dessa temperatura, os motores desligam completamente (0 dB) para silêncio absoluto.
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2: PAINEL DE TELEMETRIA AO VIVO & DIAGNÓSTICO -->
+            <div class="turing-card">
+              <div class="card-header-title">⚡ STATUS DAS FANS EM TEMPO REAL</div>
+              
+              <!-- 3 BOXES DE TELEMETRIA -->
+              <div class="gpu-fan-telemetry-hud">
+                <div class="fan-telemetry-box">
+                  <div class="fan-telemetry-val" id="gpu-live-fan-pct">0%</div>
+                  <div class="fan-telemetry-label">VELOCIDADE</div>
+                </div>
+                <div class="fan-telemetry-box">
+                  <div class="fan-telemetry-val" id="gpu-live-fan-rpm" style="color: var(--secondary);">0 RPM</div>
+                  <div class="fan-telemetry-label">ROTAÇÃO FÍSICA</div>
+                </div>
+                <div class="fan-telemetry-box">
+                  <div class="fan-telemetry-val" id="gpu-live-temp" style="color: #FF5252;">42°C</div>
+                  <div class="fan-telemetry-label">TEMPERATURA</div>
+                </div>
+              </div>
+
+              <!-- BARRA DE FLUXO DE AR DINÂMICO -->
+              <div style="margin: 16px 0 12px 0;">
+                <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--subtext); margin-bottom: 5px;">
+                  <span>FLUXO DE AR & ATIVIDADE TÉRMICA</span>
+                  <span id="gpu-fan-state-badge" class="badge-status-normal">ZERO-RPM (PASSIVO)</span>
+                </div>
+                <div style="height: 10px; background: rgba(0,0,0,0.4); border-radius: 5px; overflow: hidden; border: 1px solid var(--card-border);">
+                  <div id="gpu-fan-airflow-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--secondary), #00F5D4); transition: width 0.3s ease;"></div>
+                </div>
+              </div>
+
+              <!-- FEEDBACK DE COMANDO NO HARDWARE (AO VIVO) -->
+              <div id="gpu-command-feedback" style="background: rgba(0, 245, 212, 0.08); border: 1px solid var(--secondary); border-radius: 8px; padding: 10px; margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 16px;">✅</span>
+                <div>
+                  <div style="font-size: 11.5px; font-weight: 700; color: var(--secondary);" id="gpu-feedback-title">HARDWARE CONECTADO (NVAPI)</div>
+                  <div style="font-size: 10.5px; color: var(--text);" id="gpu-feedback-msg">Ajustes manuais e perfis atuam diretamente na sua GeForce RTX 5060 Ti via hardware.</div>
+                </div>
+              </div>
+
+              <!-- BOTÕES DE TESTE RÁPIDO DO MOTOR -->
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <div style="font-size: 11px; font-weight: 700; color: var(--subtext); margin-bottom: 8px;">TESTES DE RESFRIAMENTO INSTANTÂNEO:</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="test-fan-btn" onclick="applyQuickFanSpeed(45)">🌀 Testar 45% (Suave)</button>
+                  <button class="test-fan-btn" onclick="applyQuickFanSpeed(75)">🌪️ Testar 75% (Médio)</button>
+                  <button class="test-fan-btn" onclick="applyQuickFanSpeed(100)">⚡ Testar 100% (Turbo)</button>
+                  <button class="test-fan-btn" style="border-color: #76FF03; color: #76FF03;" onclick="setGpuProfile('bios')">🔄 Restaurar VBIOS</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <!-- 3. ABA PLACA-MÃE & CPU -->
+        <div id="modal-tab-cpu" class="modal-tab-content">
+          <div class="fan-control-grid">
+            <div class="turing-card">
+              <div class="card-header-title">🖥️ CONTROLE DO PROCESSADOR E GABINETE</div>
+              <div class="profile-buttons-grid">
+                <button class="profile-btn cpu-prof-btn active" data-cpu-profile="bios" onclick="setCpuProfile('bios')">🔒 Automático (BIOS)</button>
+                <button class="profile-btn cpu-prof-btn" data-cpu-profile="manual" onclick="setCpuProfile('manual')">🎛️ Manual (% Fixo)</button>
+                <button class="profile-btn cpu-prof-btn" data-cpu-profile="curve" onclick="setCpuProfile('curve')">📈 Curva Térmica</button>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>VELOCIDADE MANUAL DO COOLER</span>
+                  <span id="label-cpu-manual" class="slider-val-badge">50%</span>
+                </div>
+                <input type="range" id="slider-cpu-manual" min="30" max="100" value="50" oninput="onCpuManualChange(this.value)">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>TEMPERATURA ALVO DE ACELERAÇÃO</span>
+                  <span id="label-cpu-temp" class="slider-val-badge">55°C</span>
+                </div>
+                <input type="range" id="slider-cpu-temp" min="40" max="75" value="55" oninput="onCpuTempChange(this.value)">
+              </div>
+
+              <button class="action-btn" style="margin-top: 14px; width: 100%; justify-content: center;" onclick="pywebview.api.reset_all_fans()">
+                🚨 Restaurar Todas as Fans para a BIOS
+              </button>
+            </div>
+
+            <div class="turing-card">
+              <div class="card-header-title">🌀 VENTOINHAS CONECTADAS (ASROCK B450M)</div>
+              <div id="fans-list-container" style="display: flex; flex-direction: column; gap: 8px; flex: 1; overflow-y: auto;">
+                <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--card-border);">
+                  <div style="font-weight: 700; font-size: 13px;">CPU_FAN1 (Cooler do Processador)</div>
+                  <div style="font-size: 11px; color: var(--secondary); margin-top: 2px;">Controle Térmico AMD Ryzen • Auto (BIOS)</div>
+                </div>
+                <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--card-border);">
+                  <div style="font-weight: 700; font-size: 13px;">CHA_FAN1 (Ventoinhas do Gabinete)</div>
+                  <div style="font-size: 11px; color: var(--secondary); margin-top: 2px;">Fluxo de Ar Contínuo • Auto (BIOS)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- 4. ABA OTIMIZAÇÕES WINDOWS & SWAP -->
+        <div id="modal-tab-optimizer" class="modal-tab-content">
+          <div class="optimizer-container">
+            
+            <!-- BANNER HERO: APLICAR TODAS AS OTIMIZAÇÕES -->
+            <div class="turing-card opt-hero-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 16px; font-weight: 900; color: #FFFFFF; display: flex; align-items: center; gap: 8px;">
+                    <span>🚀</span> PACOTE DE OTIMIZAÇÃO GAMER & HARDWARE
+                  </div>
+                  <div style="font-size: 12px; color: var(--subtext); margin-top: 4px;">
+                    Ajuste os parâmetros críticos do Windows para extrair 100% de estabilidade e FPS da RTX 5060 Ti e Ryzen 5 5500 sem micro-stutters.
+                  </div>
+                </div>
+                <button class="action-btn btn-hero-apply" onclick="applyAllOptimizations()">
+                  🌟 Aplicar Pacote Gamer Completo (1 Clique)
+                </button>
+              </div>
+            </div>
+
+            <div class="optimizer-grid">
+              
+              <!-- COLUNA 1: MEMÓRIA VIRTUAL (SWAP / PAGEFILE) -->
+              <div class="turing-card">
+                <div class="card-header-title">
+                  <span>💾</span> GERENCIAMENTO DE MEMÓRIA VIRTUAL (SWAP / PAGEFILE)
+                </div>
+
+                <div class="opt-desc-box">
+                  O Windows costuma definir um arquivo de paginação muito reduzido (apenas 1.5 GB). Para sistemas com 24 GB de RAM e jogos modernos pesados (Warzone, Cyberpunk, CS2), o ideal é expandir para <strong>8 GB - 16 GB</strong> no SSD NVMe, impedindo quedas bruscas de FPS e erros de alocação de memória virtual.
+                </div>
+
+                <!-- ESTATÍSTICAS DO SWAP AO VIVO -->
+                <div class="hud-metric-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 12px;">
+                  <div class="hud-cell"><span class="cell-lbl">SWAP TOTAL</span><span class="cell-val" id="opt-swap-total">1.5 GB</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">SWAP EM USO</span><span class="cell-val" id="opt-swap-used">0.1 GB</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">RAM FÍSICA</span><span class="cell-val" id="opt-swap-ram">24.0 GB</span></div>
+                  <div class="hud-cell"><span class="cell-lbl">MODO ATUAL</span><span class="cell-val" id="opt-swap-status" style="color: var(--secondary); font-size: 10px;">Automático</span></div>
+                </div>
+
+                <!-- BOTÕES DE AÇÃO SWAP -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <button class="action-btn opt-action-btn" onclick="applySwapSize(8192, 16384)">
+                    <span style="font-size: 20px;">🚀</span>
+                    <div style="text-align: left; flex: 1;">
+                      <div style="font-weight: 700; color: #FFFFFF;">Aumentar Swap para 8 GB - 16 GB (Recomendado)</div>
+                      <div style="font-size: 10.5px; color: var(--subtext);">Tamanho ideal para 24 GB de RAM. Elimina gargalos de alocação no SSD C:.</div>
+                    </div>
+                  </button>
+
+                  <button class="action-btn opt-action-btn" onclick="applySwapSize(12288, 24576)">
+                    <span style="font-size: 20px;">⚡</span>
+                    <div style="text-align: left; flex: 1;">
+                      <div style="font-weight: 700; color: #FFFFFF;">Aumentar Swap para 12 GB - 24 GB (Perfil Extremo)</div>
+                      <div style="font-size: 10.5px; color: var(--subtext);">Indicado para jogos com modpacks pesados, emuladores e renderização 3D.</div>
+                    </div>
+                  </button>
+
+                  <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button class="action-btn" style="flex: 1; justify-content: center; font-size: 11px;" onclick="resetSwapAuto()">
+                      🔄 Restaurar Automático
+                    </button>
+                    <button class="action-btn" style="flex: 1; justify-content: center; font-size: 11px;" onclick="openVirtualMemoryDialog()">
+                      ⚙️ Painel Nativo Windows
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUNA 2: OTIMIZAÇÕES DO SISTEMA & LATÊNCIA -->
+              <div class="turing-card">
+                <div class="card-header-title">
+                  <span>⚡</span> OTIMIZAÇÕES DE JOGOS & LATÊNCIA DE REDE
+                </div>
+
+                <div class="opt-list">
+                  
+                  <!-- 1. MODO DE JOGO -->
+                  <div class="opt-item">
+                    <div class="opt-item-icon">🎯</div>
+                    <div class="opt-item-info">
+                      <div class="opt-item-title">Modo de Jogo do Windows (Game Mode)</div>
+                      <div class="opt-item-sub">Prioriza ciclos de GPU e CPU diretamente para o jogo ativo.</div>
+                    </div>
+                    <div id="badge-gamemode" class="opt-badge badge-pending">Verificando...</div>
+                    <button class="action-btn opt-btn-sm" onclick="enableGameMode()">Ativar</button>
+                  </div>
+
+                  <!-- 2. GAMEDVR -->
+                  <div class="opt-item">
+                    <div class="opt-item-icon">🚫</div>
+                    <div class="opt-item-info">
+                      <div class="opt-item-title">Desativar Xbox GameDVR (Gravação de Fundo)</div>
+                      <div class="opt-item-sub">Elimina gravação fantasma que rouba FPS e gera micro-travamentos.</div>
+                    </div>
+                    <div id="badge-gamedvr" class="opt-badge badge-pending">Verificando...</div>
+                    <button class="action-btn opt-btn-sm" onclick="disableGameDVR()">Desativar</button>
+                  </div>
+
+                  <!-- 3. REDE E LATÊNCIA -->
+                  <div class="opt-item">
+                    <div class="opt-item-icon">🌐</div>
+                    <div class="opt-item-info">
+                      <div class="opt-item-title">Otimização de Latência & Network Throttling</div>
+                      <div class="opt-item-sub">Desativa limite de pacotes de rede para ping estável em jogos online.</div>
+                    </div>
+                    <div id="badge-network" class="opt-badge badge-pending">Verificando...</div>
+                    <button class="action-btn opt-btn-sm" onclick="optimizeNetwork()">Otimizar</button>
+                  </div>
+
+                  <!-- 4. ENERGIA ALTO DESEMPENHO -->
+                  <div class="opt-item">
+                    <div class="opt-item-icon">🔋</div>
+                    <div class="opt-item-info">
+                      <div class="opt-item-title">Plano de Energia: Alto Desempenho</div>
+                      <div class="opt-item-sub">Mantém a CPU Ryzen 5 5500 sempre pronta sem latência de transição.</div>
+                    </div>
+                    <div id="badge-power" class="opt-badge badge-pending">Verificando...</div>
+                    <button class="action-btn opt-btn-sm" onclick="setHighPerformancePower()">Ativar</button>
+                  </div>
+
+                  <!-- 5. LIMPAR CACHE DE RAM -->
+                  <div class="opt-item">
+                    <div class="opt-item-icon">🧹</div>
+                    <div class="opt-item-info">
+                      <div class="opt-item-title">Limpar Memória Standby / Cache de RAM</div>
+                      <div class="opt-item-sub">Libera blocos de RAM em espera antes de abrir um jogo pesado.</div>
+                    </div>
+                    <button class="action-btn opt-btn-sm" style="border-color: var(--secondary);" onclick="purgeRamCache()">Liberar Agora</button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 5. ABA WIN11DEBLOAT NATIVA & OFFLINE -->
+        <div id="modal-tab-debloat" class="modal-tab-content">
+          <div class="optimizer-container">
+            
+            <!-- HERO BANNER: WIN11DEBLOAT NATIVO -->
+            <div class="turing-card opt-hero-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 15px; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 8px;">
+                    <span>🧹</span> INTERFACE GRÁFICA DE DEBLOAT DO WINDOWS 11
+                  </div>
+                  <div style="font-size: 11.5px; color: var(--subtext); margin-top: 4px;">
+                    Baseado no projeto oficial <strong>Win11Debloat</strong> por <strong>Raphire</strong>. Selecione visualmente os aplicativos, tweaks de interface e privacidade.
+                  </div>
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="action-btn" style="border-color: #00E5FF; background: rgba(0, 229, 255, 0.1);" onclick="launchOfficialWin11DebloatGui()" title="Abre a janela gráfica oficial independente do Win11Debloat em WinForms/PowerShell">
+                    🖥️ Abrir GUI Oficial Externa
+                  </button>
+                  <button class="action-btn btn-hero-apply" onclick="applyFullWin11Debloat()">
+                    ⚡ Debloat Completo (1 Clique)
+                  </button>
+                  <button class="action-btn" style="border-color: #76FF03;" onclick="restartWindowsExplorer()" title="Reinicia o processo explorer.exe para aplicar alterações na barra de tarefas">
+                    🔄 Reiniciar Explorer
+                  </button>
+                  <button class="action-btn" style="border-color: #00D2FF;" onclick="createDebloatRestorePoint()" title="Cria um ponto de restauração oficial prévio">
+                    🛡️ Criar Ponto
+                  </button>
+                </div>
+              </div>
+
+              <!-- SUB-ABAS NAVEGAÇÃO DA GUI DE DEBLOAT -->
+              <div class="debloat-subnav">
+                <button class="debloat-subnav-btn active" id="btn-subnav-apps" onclick="switchDebloatSubTab('apps')">
+                  📦 1. Seletor de Aplicativos (Bloatwares)
+                </button>
+                <button class="debloat-subnav-btn" id="btn-subnav-tweaks" onclick="switchDebloatSubTab('tweaks')">
+                  🛠️ 2. Personalizações de Interface & Explorer
+                </button>
+                <button class="debloat-subnav-btn" id="btn-subnav-privacy" onclick="switchDebloatSubTab('privacy')">
+                  🛡️ 3. Privacidade, Telemetria & IA
+                </button>
+              </div>
+
+              <!-- CONSOLE DE LOGS EM TEMPO REAL -->
+              <div id="debloat-console-wrapper" style="margin-top: 14px; display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--subtext); margin-bottom: 4px;">
+                  <span>💻 Terminal de Execução do Debloat:</span>
+                  <button style="background: none; border: none; color: var(--secondary); cursor: pointer; font-size: 10px;" onclick="clearDebloatConsole()">Limpar Log</button>
+                </div>
+                <pre id="debloat-console" style="background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 14px; font-family: 'Consolas', monospace; font-size: 11px; color: #81C784; max-height: 140px; overflow-y: auto; line-height: 1.5; white-space: pre-wrap; margin: 0;"></pre>
+              </div>
+            </div>
+
+            <!-- SEÇÃO 1: SELETOR GRÁFICO DE APPS -->
+            <div id="debloat-view-apps" class="debloat-section-view active">
+              <div class="debloat-toolbar">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <span style="font-size: 11px; font-weight: 700; color: var(--subtext);">SELEÇÃO RÁPIDA:</span>
+                  <button class="fan-preset-pill" onclick="selectDebloatApps('recommended')">✅ Recomendados</button>
+                  <button class="fan-preset-pill" onclick="selectDebloatApps('all')">🔘 Marcar Todos</button>
+                  <button class="fan-preset-pill" onclick="selectDebloatApps('none')">❌ Desmarcar Todos</button>
+                </div>
+                <button class="action-btn" style="border-color: #FF5252; background: rgba(255, 82, 82, 0.15); font-weight: 800;" onclick="removeSelectedDebloatApps()">
+                  🗑️ Desinstalar Selecionados (<span id="count-selected-apps">0</span> apps)
+                </button>
+              </div>
+
+              <!-- GRID DE CHECKBOXES DOS APLICATIVOS -->
+              <div class="debloat-apps-grid" id="debloat-apps-container">
+                <!-- Preenchido dinamicamente via JavaScript -->
+              </div>
+            </div>
+
+            <!-- SEÇÃO 2: TWEAKS DE INTERFACE & EXPLORER -->
+            <div id="debloat-view-tweaks" class="debloat-section-view">
+              <div class="debloat-toolbar">
+                <div style="font-size: 11.5px; font-weight: 700; color: #FFFFFF;">
+                  🎨 Ajustes Clássicos de Usabilidade e Produtividade (Estilo Win11Debloat)
+                </div>
+                <button class="action-btn" style="border-color: var(--secondary); background: rgba(0, 245, 212, 0.15);" onclick="applyDebloatUiTweaks()">
+                  💾 Aplicar Personalizações Selecionadas
+                </button>
+              </div>
+
+              <div class="debloat-tweaks-grid">
+                <label class="debloat-tweak-card">
+                  <input type="checkbox" id="tweak-classic-context" checked>
+                  <div class="opt-item-info">
+                    <div class="opt-item-title">📁 Menu de Contexto Clássico do Windows 10</div>
+                    <div class="opt-item-sub">Restaura o menu com clique direito completo e sem a opção "Mostrar mais opções".</div>
+                  </div>
+                </label>
+
+                <label class="debloat-tweak-card">
+                  <input type="checkbox" id="tweak-file-ext" checked>
+                  <div class="opt-item-info">
+                    <div class="opt-item-title">👁️ Exibir Extensões de Arquivos (.exe, .txt, etc.)</div>
+                    <div class="opt-item-sub">Facilita identificar tipos de arquivos e previne execução acidental de vírus.</div>
+                  </div>
+                </label>
+
+                <label class="debloat-tweak-card">
+                  <input type="checkbox" id="tweak-hidden-files">
+                  <div class="opt-item-info">
+                    <div class="opt-item-title">📂 Exibir Arquivos e Pastas Ocultos</div>
+                    <div class="opt-item-sub">Mostra pastas ocultas como AppData para facilitar acesso e configurações.</div>
+                  </div>
+                </label>
+
+                <label class="debloat-tweak-card">
+                  <input type="checkbox" id="tweak-mouse-accel" checked>
+                  <div class="opt-item-info">
+                    <div class="opt-item-title">🖱️ Desativar Aceleração do Mouse (Precisão Gamer 1:1)</div>
+                    <div class="opt-item-sub">Desliga o 'Enhance Pointer Precision' para mira consistente em jogos de tiro.</div>
+                  </div>
+                </label>
+
+                <label class="debloat-tweak-card">
+                  <input type="checkbox" id="tweak-task-view" checked>
+                  <div class="opt-item-info">
+                    <div class="opt-item-title">🎯 Ocultar Botão Visão de Tarefas (Task View)</div>
+                    <div class="opt-item-sub">Economiza espaço útil na barra de tarefas do Windows 11.</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- SEÇÃO 3: PRIVACIDADE, TELEMETRIA & IA -->
+            <div id="debloat-view-privacy" class="debloat-section-view">
+              <div class="optimizer-grid">
+                
+                <!-- COLUNA 1: TELEMETRIA E DIAGNÓSTICO -->
+                <div class="turing-card">
+                  <div class="card-header-title">
+                    <span>🕵️</span> RASTREAMENTO E TELEMETRIA
+                  </div>
+                  <div class="opt-list">
+                    <div class="opt-item">
+                      <div class="opt-item-icon">🕵️</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Telemetria & Rastreamento</div>
+                        <div class="opt-item-sub">Desliga Advertising ID, DiagTrack, dmwappushservice e diagnóstico.</div>
+                      </div>
+                      <div id="badge-debloat-telemetry" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatTelemetry()">Desativar</button>
+                    </div>
+
+                    <div class="opt-item">
+                      <div class="opt-item-icon">📢</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Dicas, Sugestões & Anúncios</div>
+                        <div class="opt-item-sub">Bloqueia notificações promocionais, apps sugeridos e anúncios no sistema.</div>
+                      </div>
+                      <div id="badge-debloat-suggestions" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatSuggestions()">Desativar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COLUNA 2: INTELIGÊNCIA ARTIFICIAL E BING -->
+                <div class="turing-card">
+                  <div class="card-header-title">
+                    <span>⚡</span> IA, BING & SERVIÇOS WEB
+                  </div>
+                  <div class="opt-list">
+                    <div class="opt-item">
+                      <div class="opt-item-icon">🔍</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Busca Bing no Menu Iniciar</div>
+                        <div class="opt-item-sub">Remove pesquisas na web do Iniciar, deixando a busca local instantânea.</div>
+                      </div>
+                      <div id="badge-debloat-bing" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatBing()">Desativar</button>
+                    </div>
+
+                    <div class="opt-item">
+                      <div class="opt-item-icon">🤖</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Microsoft Copilot</div>
+                        <div class="opt-item-sub">Desliga o serviço do Copilot e remove o botão da barra de tarefas.</div>
+                      </div>
+                      <div id="badge-debloat-copilot" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatCopilot()">Desativar</button>
+                    </div>
+
+                    <div class="opt-item">
+                      <div class="opt-item-icon">🧠</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Windows AI Recall</div>
+                        <div class="opt-item-sub">Desativa gravação e análise de tela em segundo plano do Recall.</div>
+                      </div>
+                      <div id="badge-debloat-recall" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatRecall()">Desativar</button>
+                    </div>
+
+                    <div class="opt-item">
+                      <div class="opt-item-icon">📰</div>
+                      <div class="opt-item-info">
+                        <div class="opt-item-title">Desativar Widgets da Barra de Tarefas</div>
+                        <div class="opt-item-sub">Oculta o ícone de Widgets e desativa o feed de notícias (economia de RAM/CPU).</div>
+                      </div>
+                      <div id="badge-debloat-widgets" class="opt-badge badge-pending">Verificando...</div>
+                      <button class="action-btn opt-btn-sm" onclick="disableDebloatWidgets()">Desativar</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- NOTA DE RECONHECIMENTO OPEN-SOURCE -->
+            <div style="margin-top: 10px; font-size: 11px; color: var(--subtext); text-align: center;">
+              Baseado nas políticas e scripts do projeto de código aberto <strong>Win11Debloat</strong> por <strong>Raphire</strong> • 
+              <span style="color: var(--secondary); font-weight: 700;">github.com/raphire/win11debloat</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ================= MODAL DE CONFIGURAÇÕES (ENGRENAGEM) =================
+    function openSettingsModal(tabId = 'themes') {
+      const modal = document.getElementById('settings-modal');
+      if (modal) {
+        modal.classList.add('open');
+        switchModalTab(tabId);
+      }
+    }
+
+    function closeSettingsModal() {
+      const modal = document.getElementById('settings-modal');
+      if (modal) {
+        modal.classList.remove('open');
+      }
+    }
+
+    function switchModalTab(tabId) {
+      document.querySelectorAll('.modal-tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.modal-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      const target = document.getElementById('modal-tab-' + tabId);
+      if (target) target.classList.add('active');
+
+      const activeBtn = document.querySelector(`.modal-tab-btn[data-tab="${tabId}"]`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      if (tabId === 'optimizer') {
+        loadOptimizerStatus();
+      } else if (tabId === 'debloat') {
+        loadDebloatStatus();
+        loadDebloatAppsCatalog();
+        loadDebloatUiTweaks();
+      }
+    }
+
+    function onModalOverlayClick(e) {
+      if (e.target && e.target.id === 'settings-modal') {
+        closeSettingsModal();
+      }
+    }
+
+    // Compatibilidade com chamadas legado
+    function switchTab(tabId) {
+      if (tabId === 'turing') {
+        closeSettingsModal();
+      } else {
+        openSettingsModal(tabId);
+      }
+    }
+
+    // ================= TELA CHEIA (FULLSCREEN) =================
+    function toggleFullscreen() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.toggle_fullscreen().then(isFs => {
+          onFullscreenChanged(isFs);
+        });
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'F11') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key === 'Escape') {
+        const modal = document.getElementById('settings-modal');
+        if (modal && modal.classList.contains('open')) {
+          closeSettingsModal();
+          return;
+        }
+        if (document.body.classList.contains('is-fullscreen')) {
+          toggleFullscreen();
+        }
+      }
+    });
+
+    let fsExitTimer = null;
+    function onFullscreenChanged(isFullscreen) {
+      const btn = document.querySelector('.fs-exit-floating');
+      clearTimeout(fsExitTimer);
+
+      if (isFullscreen) {
+        document.body.classList.add('is-fullscreen');
+        if (btn) {
+          btn.style.display = 'block';
+          void btn.offsetWidth;
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+
+          // Permanece visível por 5 segundos e depois desaparece suavemente
+          fsExitTimer = setTimeout(() => {
+            btn.style.opacity = '0';
+            btn.style.pointerEvents = 'none';
+            setTimeout(() => {
+              if (btn.style.opacity === '0') {
+                btn.style.display = 'none';
+              }
+            }, 600);
+          }, 5000);
+        }
+      } else {
+        document.body.classList.remove('is-fullscreen');
+        if (btn) {
+          btn.style.opacity = '0';
+          btn.style.pointerEvents = 'none';
+          btn.style.display = 'none';
+        }
+      }
+    }
+
+    // ================= MODO DE VISUALIZAÇÃO (DETALHADO vs FOCO) =================
+    let hudModeMinimal = false;
+    function toggleHudMode() {
+      hudModeMinimal = !hudModeMinimal;
+      const btn = document.getElementById('btn-quick-hud');
+      if (hudModeMinimal) {
+        document.body.classList.add('hud-mode-minimal');
+        if (btn) btn.title = '🎯 Detalhes: Foco (Clique para Normal)';
+      } else {
+        document.body.classList.remove('hud-mode-minimal');
+        if (btn) btn.title = '📊 Detalhes: Normal (Clique para Foco)';
+      }
+    }
+
+    // ================= SELETOR DOS TEMAS (20 TEMAS & FILTRO DE CATEGORIAS) =================
+    function filterThemeCategory(cat) {
+      document.querySelectorAll('.theme-cat-btn').forEach(b => {
+        if (b.getAttribute('data-cat') === cat) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('#themes-grid-container .theme-card-item').forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function setTheme(themeKey, notifyPython = true) {
+      const toRemove = [];
+      document.body.classList.forEach(cls => {
+        if (cls.startsWith('theme-')) toRemove.push(cls);
+      });
+      toRemove.forEach(cls => document.body.classList.remove(cls));
+
+      const safeKey = themeKey.replace('turing_classic', 'turing');
+      document.body.classList.add('theme-' + safeKey);
+
+      document.querySelectorAll('.theme-chip, .theme-card-item').forEach(c => {
+        if (c.getAttribute('data-theme') === themeKey) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+
+      if (notifyPython && window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_theme(themeKey);
+      }
+
+      // Reinicia partículas temáticas para corresponder instantaneamente ao novo jogo/estilo
+      if (typeof createThemeParticles === 'function') {
+        createThemeParticles();
+      }
+    }
+
+    // ================= PERSONALIZAÇÃO & VERSATILIDADE DOS TEMAS =================
+    let currentCustomAccent = "";
+    let scanlinesEnabled = true;
+    let animatedBgEnabled = true;
+
+    // ================= MOTOR DE ANIMAÇÕES TEMÁTICAS CANVAS =================
+    let animCanvas = null;
+    let animCtx = null;
+    let animParticles = [];
+    let animFrameId = null;
+
+    function initAnimatedCanvas() {
+      animCanvas = document.getElementById('animated-bg-canvas');
+      if (!animCanvas) return;
+      animCtx = animCanvas.getContext('2d');
+
+      function resizeCanvas() {
+        if (!animCanvas) return;
+        animCanvas.width = window.innerWidth;
+        animCanvas.height = window.innerHeight;
+        animCanvas.style.width = '100vw';
+        animCanvas.style.height = '100vh';
+      }
+      window.resizeCanvas = resizeCanvas;
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      createThemeParticles();
+      if (!animFrameId) {
+        animFrameId = requestAnimationFrame(renderAnimatedCanvas);
+      }
+    }
+
+    function createThemeParticles() {
+      animParticles = [];
+      if (!animCanvas) return;
+      const w = animCanvas.width;
+      const h = animCanvas.height;
+
+      // Obtém o tema ativo na classe do body
+      let currentTheme = 'cs2';
+      document.body.classList.forEach(cls => {
+        if (cls.startsWith('theme-')) currentTheme = cls.replace('theme-', '');
+      });
+
+      // Configura partículas customizadas de acordo com a temática do jogo
+      let count = 45;
+      let type = 'sparks'; // sparks, embers, data, stars, snow, digital
+
+      if (currentTheme === 'matrix') {
+        type = 'matrix_rain';
+        count = Math.floor(w / 28);
+      } else if (currentTheme === 'cs2' || currentTheme === 'warzone' || currentTheme === 'magma') {
+        type = 'embers';
+        count = 55;
+      } else if (currentTheme === 'arctic') {
+        type = 'snow';
+        count = 65;
+      } else if (currentTheme === 'synthwave' || currentTheme === 'cyberpunk' || currentTheme === 'gta') {
+        type = 'neon_sparks';
+        count = 45;
+      } else if (currentTheme === 'eldenring' || currentTheme === 'gold') {
+        type = 'gold_dust';
+        count = 50;
+      } else if (currentTheme === 'scifi' || currentTheme === 'turing') {
+        type = 'stars_hyperspace';
+        count = 60;
+      } else {
+        type = 'ambient_glow';
+        count = 40;
+      }
+
+      for (let i = 0; i < count; i++) {
+        animParticles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          size: Math.random() * 2.5 + 1,
+          alpha: Math.random() * 0.6 + 0.2,
+          pulse: Math.random() * 0.04 + 0.01,
+          char: String.fromCharCode(0x30A0 + Math.floor(Math.random() * 96)),
+          speed: Math.random() * 2.5 + 1.2,
+          type: type
+        });
+      }
+    }
+
+    function renderAnimatedCanvas() {
+      if (!animCanvas || !animCtx) return;
+      if (!animatedBgEnabled) {
+        animCtx.clearRect(0, 0, animCanvas.width, animCanvas.height);
+        animFrameId = null;
+        return;
+      }
+
+      const w = animCanvas.width;
+      const h = animCanvas.height;
+
+      // Pega a cor secundária CSS para manter harmonia cromática viva
+      const computedStyle = getComputedStyle(document.body);
+      const accentColor = computedStyle.getPropertyValue('--secondary').trim() || '#00F0FF';
+      const primaryColor = computedStyle.getPropertyValue('--primary').trim() || '#FF7700';
+
+      animCtx.clearRect(0, 0, w, h);
+
+      for (let i = 0; i < animParticles.length; i++) {
+        const p = animParticles[i];
+
+        if (p.type === 'matrix_rain') {
+          // Chuva de código Matrix Hacker
+          animCtx.font = '13px monospace';
+          animCtx.fillStyle = 'rgba(0, 255, 65, ' + p.alpha + ')';
+          animCtx.fillText(p.char, p.x, p.y);
+          p.y += p.speed;
+          if (Math.random() < 0.05) {
+            p.char = String.fromCharCode(0x30A0 + Math.floor(Math.random() * 96));
+          }
+          if (p.y > h) {
+            p.y = 0;
+            p.x = Math.random() * w;
+          }
+        } else if (p.type === 'embers') {
+          // Fagúlhas ardentes subindo (CS2 / Warzone / Magma)
+          animCtx.beginPath();
+          animCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          animCtx.fillStyle = (i % 2 === 0) ? `rgba(255, 120, 20, ${p.alpha})` : `rgba(255, 200, 50, ${p.alpha})`;
+          animCtx.shadowBlur = 8;
+          animCtx.shadowColor = '#FF5500';
+          animCtx.fill();
+
+          p.y -= Math.abs(p.vy) + 0.6;
+          p.x += Math.sin(p.y * 0.02) * 0.5;
+          p.alpha += Math.sin(p.y * 0.05) * 0.02;
+
+          if (p.y < 0) {
+            p.y = h;
+            p.x = Math.random() * w;
+            p.alpha = Math.random() * 0.5 + 0.2;
+          }
+        } else if (p.type === 'snow') {
+          // Nevasca glacial caindo (Arctic Frost)
+          animCtx.beginPath();
+          animCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          animCtx.fillStyle = `rgba(220, 245, 255, ${p.alpha})`;
+          animCtx.shadowBlur = 4;
+          animCtx.shadowColor = '#00E5FF';
+          animCtx.fill();
+
+          p.y += p.speed * 0.8;
+          p.x += Math.sin(p.y * 0.015) * 0.7;
+
+          if (p.y > h) {
+            p.y = 0;
+            p.x = Math.random() * w;
+          }
+        } else if (p.type === 'gold_dust') {
+          // Poeira dourada mágica da Térvore (Elden Ring / Gold)
+          animCtx.beginPath();
+          animCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          animCtx.fillStyle = `rgba(242, 201, 76, ${p.alpha})`;
+          animCtx.shadowBlur = 10;
+          animCtx.shadowColor = '#FFB800';
+          animCtx.fill();
+
+          p.y += (Math.random() - 0.5) * 0.6;
+          p.x += (Math.random() - 0.5) * 0.6;
+          p.alpha += p.pulse;
+          if (p.alpha > 0.8 || p.alpha < 0.15) p.pulse = -p.pulse;
+        } else {
+          // Partículas holográficas e neon conectadas em teia
+          animCtx.beginPath();
+          animCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          animCtx.fillStyle = (i % 2 === 0) ? accentColor : primaryColor;
+          animCtx.globalAlpha = p.alpha;
+          animCtx.shadowBlur = 8;
+          animCtx.shadowColor = accentColor;
+          animCtx.fill();
+          animCtx.globalAlpha = 1.0;
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > w) p.vx = -p.vx;
+          if (p.y < 0 || p.y > h) p.vy = -p.vy;
+
+          // Traça linhas sutis entre partículas próximas (efeito constelação/HUD)
+          for (let j = i + 1; j < animParticles.length; j++) {
+            const p2 = animParticles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 90) {
+              animCtx.beginPath();
+              animCtx.moveTo(p.x, p.y);
+              animCtx.lineTo(p2.x, p2.y);
+              animCtx.strokeStyle = accentColor;
+              animCtx.globalAlpha = (1 - dist / 90) * 0.16;
+              animCtx.lineWidth = 0.8;
+              animCtx.stroke();
+              animCtx.globalAlpha = 1.0;
+            }
+          }
+        }
+      }
+
+      animFrameId = requestAnimationFrame(renderAnimatedCanvas);
+    }
+
+    function onCardOpacityChange(val) {
+      document.getElementById('label-card-opacity').innerText = val + '%';
+      const alpha = (val / 100.0).toFixed(2);
+      document.documentElement.style.setProperty('--card-bg-opacity', alpha);
+      saveThemeCustomizationsDebounced();
+    }
+
+    function onCardBlurChange(val) {
+      document.getElementById('label-card-blur').innerText = val + 'px';
+      document.documentElement.style.setProperty('--card-blur', val + 'px');
+      saveThemeCustomizationsDebounced();
+    }
+
+    function onBgBrightnessChange(val) {
+      document.getElementById('label-bg-brightness').innerText = val + '%';
+      const b = (val / 100.0).toFixed(2);
+      document.documentElement.style.setProperty('--bg-brightness', b);
+      saveThemeCustomizationsDebounced();
+    }
+
+    function applyCustomAccent(hex) {
+      currentCustomAccent = hex;
+      document.documentElement.style.setProperty('--secondary', hex);
+      document.documentElement.style.setProperty('--pill-fill', hex);
+      const picker = document.getElementById('picker-custom-color');
+      if (picker) picker.value = hex;
+      saveThemeCustomizationsDebounced();
+    }
+
+    function toggleScanlines() {
+      scanlinesEnabled = !scanlinesEnabled;
+      const overlay = document.querySelector('.scanline-overlay');
+      if (overlay) overlay.style.display = scanlinesEnabled ? 'block' : 'none';
+      const btn = document.getElementById('btn-toggle-scanlines');
+      if (btn) btn.innerText = scanlinesEnabled ? '📺 Scanlines CRT: Ligado' : '📺 Scanlines CRT: Desligado';
+      saveThemeCustomizationsDebounced();
+    }
+
+    function toggleAnimatedBg() {
+      animatedBgEnabled = !animatedBgEnabled;
+      const btn = document.getElementById('btn-toggle-animated-bg');
+      if (animatedBgEnabled) {
+        document.body.classList.remove('animated-bg-disabled');
+        document.body.classList.add('animated-bg-active');
+        if (btn) btn.innerText = '✨ Fundo Animado: Ativado';
+        initAnimatedCanvas();
+      } else {
+        document.body.classList.add('animated-bg-disabled');
+        document.body.classList.remove('animated-bg-active');
+        if (btn) btn.innerText = '✨ Fundo Animado: Desativado';
+      }
+      saveThemeCustomizationsDebounced();
+    }
+
+    function resetThemeCustomizations() {
+      document.getElementById('slider-card-opacity').value = 46;
+      document.getElementById('label-card-opacity').innerText = '46%';
+      document.documentElement.style.setProperty('--card-bg-opacity', '0.46');
+
+      document.getElementById('slider-card-blur').value = 8;
+      document.getElementById('label-card-blur').innerText = '8px';
+      document.documentElement.style.setProperty('--card-blur', '8px');
+
+      document.getElementById('slider-bg-brightness').value = 100;
+      document.getElementById('label-bg-brightness').innerText = '100%';
+      document.documentElement.style.setProperty('--bg-brightness', '1');
+
+      document.documentElement.style.removeProperty('--secondary');
+      document.documentElement.style.removeProperty('--pill-fill');
+      currentCustomAccent = "";
+
+      scanlinesEnabled = true;
+      const overlay = document.querySelector('.scanline-overlay');
+      if (overlay) overlay.style.display = 'block';
+      const btnScan = document.getElementById('btn-toggle-scanlines');
+      if (btnScan) btnScan.innerText = '📺 Scanlines CRT: Ligado';
+
+      animatedBgEnabled = true;
+      document.body.classList.remove('animated-bg-disabled');
+      document.body.classList.add('animated-bg-active');
+      const btnAnim = document.getElementById('btn-toggle-animated-bg');
+      if (btnAnim) btnAnim.innerText = '✨ Fundo Animado: Ativado';
+      initAnimatedCanvas();
+
+      showToast("Configurações visuais restauradas para o padrão do tema!", true);
+      showToast("Configurações visuais restauradas para o padrão do tema!", true);
+      saveThemeCustomizationsDebounced();
+    }
+
+    function pickCustomWallpaper() {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.choose_custom_wallpaper) {
+        window.pywebview.api.choose_custom_wallpaper().then(res => {
+          if (res && res.success) {
+            setTheme('custom');
+            document.body.style.setProperty('--bg-image', 'url("' + res.path + '")');
+            showToast('Wallpaper personalizado carregado com sucesso!', true);
+          } else if (res && res.error && res.error !== 'Seleção cancelada') {
+            showToast('Aviso: ' + res.error, false);
+          }
+        }).catch(err => showToast('Erro ao abrir seletor: ' + err, false));
+      }
+    }
+
+    let saveThemeTimer = null;
+    function saveThemeCustomizationsDebounced() {
+      clearTimeout(saveThemeTimer);
+      saveThemeTimer = setTimeout(() => {
+        if (window.pywebview && window.pywebview.api && window.pywebview.api.save_theme_customizations) {
+          const payload = {
+            card_opacity: parseFloat((document.getElementById('slider-card-opacity').value / 100.0).toFixed(2)),
+            card_blur: parseInt(document.getElementById('slider-card-blur').value),
+            bg_brightness: parseInt(document.getElementById('slider-bg-brightness').value),
+            custom_accent: currentCustomAccent,
+            scanlines: scanlinesEnabled,
+            animated_bg: animatedBgEnabled
+          };
+          window.pywebview.api.save_theme_customizations(payload);
+        }
+      }, 500);
+    }
+
+    // ================= CONTROLES DE PERFIS GPU =================
+    function setGpuProfile(prof, notifyPython = true) {
+      document.querySelectorAll('.gpu-prof-btn').forEach(b => {
+        if (b.getAttribute('data-gpu-profile') === prof) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      const profNames = {
+        'quiet': 'Silencioso / Eco (Zero-RPM até 60°C)',
+        'balanced': 'Equilibrado (Zero-RPM até 50°C)',
+        'performance': 'Gamer / Alta Performance (Mínimo 50%)',
+        'turbo': 'Turbo 100% (Rotação Máxima)',
+        'manual': 'Velocidade Fixa Manual',
+        'bios': 'VBIOS Automático (Padrão de Fábrica)'
+      };
+
+      const feedbackTitle = document.getElementById('gpu-feedback-title');
+      const feedbackMsg = document.getElementById('gpu-feedback-msg');
+      if (feedbackTitle) feedbackTitle.innerText = "PERFIL APLICADO NO HARDWARE";
+      if (feedbackMsg) feedbackMsg.innerText = `Modo ${profNames[prof] || prof} ativado imediatamente na RTX 5060 Ti.`;
+
+      if (notifyPython && window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_gpu_profile(prof).then(res => {
+          if (res && res.message) {
+            if (feedbackMsg) feedbackMsg.innerText = res.message;
+            showToast(res.message, true);
+          }
+        }).catch(err => {
+          console.error("Erro ao aplicar perfil:", err);
+        });
+      }
+    }
+
+    function applyQuickFanSpeed(spd) {
+      const slider = document.getElementById('slider-manual');
+      if (slider) slider.value = spd;
+      const label = document.getElementById('label-manual');
+      if (label) label.innerText = spd + '%';
+
+      document.querySelectorAll('.fan-preset-pill').forEach(pill => {
+        if (pill.innerText.trim() === spd + '%') {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Seleciona visualmente o botão 'manual'
+      document.querySelectorAll('.gpu-prof-btn').forEach(b => {
+        if (b.getAttribute('data-gpu-profile') === 'manual') {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      const feedbackTitle = document.getElementById('gpu-feedback-title');
+      const feedbackMsg = document.getElementById('gpu-feedback-msg');
+      if (feedbackTitle) feedbackTitle.innerText = "VELOCIDADE MANUAL APLICADA";
+      if (feedbackMsg) feedbackMsg.innerText = `Forçando ${spd}% de rotação contínua nas ventoinhas da RTX 5060 Ti...`;
+
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_gpu_manual_speed(parseInt(spd)).then(res => {
+          if (res && res.message) {
+            if (feedbackMsg) feedbackMsg.innerText = res.message;
+            showToast(res.message, true);
+          }
+        });
+      }
+    }
+
+    function onZeroRpmChange(val) {
+      document.getElementById('label-zero-rpm').innerText = val + '°C';
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_gpu_zero_rpm(parseInt(val));
+      }
+      showToast(`Limite Zero-RPM ajustado para ${val}°C`, true);
+    }
+
+    function onHystChange(val) {
+      const el = document.getElementById('label-hyst');
+      if (el) el.innerText = val + '°C';
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_gpu_hysteresis(parseInt(val));
+      }
+    }
+
+    function onManualSpeedChange(val) {
+      document.getElementById('label-manual').innerText = val + '%';
+      
+      document.querySelectorAll('.fan-preset-pill').forEach(pill => {
+        if (pill.innerText.trim() === val + '%') {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Marca perfil como manual
+      document.querySelectorAll('.gpu-prof-btn').forEach(b => {
+        if (b.getAttribute('data-gpu-profile') === 'manual') {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_gpu_manual_speed(parseInt(val));
+      }
+    }
+
+    // ================= CONTROLES DE PERFIS CPU =================
+    function setCpuProfile(prof, notifyPython = true) {
+      document.querySelectorAll('.cpu-prof-btn').forEach(b => {
+        if (b.getAttribute('data-cpu-profile') === prof) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+      if (notifyPython && window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_cpu_profile(prof);
+      }
+    }
+
+    function onCpuManualChange(val) {
+      document.getElementById('label-cpu-manual').innerText = val + '%';
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_cpu_manual_speed(parseInt(val));
+      }
+    }
+
+    function onCpuTempChange(val) {
+      document.getElementById('label-cpu-temp').innerText = val + '°C';
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_cpu_target_temp(parseInt(val));
+      }
+    }
+
+    // ================= ELEVAÇÃO DE ADMINISTRADOR =================
+    function requestAdminElevation() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.request_admin();
+      }
+    }
+
+    // ================= OTIMIZAÇÕES DO WINDOWS & SWAP =================
+    function showToast(msg, isSuccess = true) {
+      const toast = document.getElementById('opt-toast');
+      if (!toast) return;
+      toast.innerText = msg;
+      toast.style.borderColor = isSuccess ? 'var(--secondary)' : '#FF1744';
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 5000);
+    }
+
+    function loadOptimizerStatus() {
+      if (window.pywebview && window.pywebview.api) {
+        // Telemetria Swap
+        if (window.pywebview.api.get_swap_info) {
+          window.pywebview.api.get_swap_info().then(info => {
+            if (!info) return;
+            const tEl = document.getElementById('opt-swap-total');
+            const uEl = document.getElementById('opt-swap-used');
+            const rEl = document.getElementById('opt-swap-ram');
+            const sEl = document.getElementById('opt-swap-status');
+            if (tEl) tEl.innerText = info.total_gb + ' GB';
+            if (uEl) uEl.innerText = info.used_gb + ' GB';
+            if (rEl) rEl.innerText = info.ram_total_gb + ' GB';
+            if (sEl) sEl.innerText = info.status_str;
+          }).catch(e => console.error(e));
+        }
+
+        // Status das Otimizações
+        if (window.pywebview.api.get_optimizations_status) {
+          window.pywebview.api.get_optimizations_status().then(st => {
+            if (!st) return;
+            updateBadge('badge-gamemode', st.game_mode, 'Ativado', 'Desativado');
+            updateBadge('badge-gamedvr', st.game_dvr_disabled, 'Desativado (OK)', 'Ativo (Pesado)');
+            updateBadge('badge-network', st.network_optimized, 'Otimizado', 'Padrão');
+            updateBadge('badge-power', st.high_performance, 'Alto Desempenho', 'Equilibrado');
+          }).catch(e => console.error(e));
+        }
+      }
+    }
+
+    function updateBadge(id, isActive, activeText, inactiveText) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.className = 'opt-badge ' + (isActive ? 'badge-active' : 'badge-inactive');
+      el.innerText = isActive ? ('✓ ' + activeText) : ('✕ ' + inactiveText);
+    }
+
+    function applySwapSize(initialMb, maxMb) {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_swap_size(initialMb, maxMb).then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1500);
+        }).catch(err => showToast('Erro: ' + err, false));
+      }
+    }
+
+    function resetSwapAuto() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.reset_swap_auto().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1500);
+        }).catch(err => showToast('Erro: ' + err, false));
+      }
+    }
+
+    function openVirtualMemoryDialog() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.open_virtual_memory_dialog();
+      }
+    }
+
+    function enableGameMode() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.enable_game_mode().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1000);
+        });
+      }
+    }
+
+    function disableGameDVR() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.disable_game_dvr().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1000);
+        });
+      }
+    }
+
+    function optimizeNetwork() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.optimize_network_latency().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1500);
+        });
+      }
+    }
+
+    function setHighPerformancePower() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.set_high_performance_power().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1000);
+        });
+      }
+    }
+
+    function purgeRamCache() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.purge_ram_cache().then(res => {
+          showToast(res.message, res.success);
+        });
+      }
+    }
+
+    function applyAllOptimizations() {
+      if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.apply_all_gamer_optimizations().then(res => {
+          showToast(res.message, res.success);
+          setTimeout(loadOptimizerStatus, 1500);
+        });
+      }
+    }
+
+    // ================= SUÍTE DE DEBLOAT NATIVA & OFFLINE JAVASCRIPT =================
+    let debloatCatalogData = [];
+
+    function switchDebloatSubTab(tab) {
+      document.querySelectorAll('.debloat-subnav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.debloat-section-view').forEach(v => v.classList.remove('active'));
+
+      const activeBtn = document.getElementById('btn-subnav-' + tab);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const activeView = document.getElementById('debloat-view-' + tab);
+      if (activeView) activeView.classList.add('active');
+
+      if (tab === 'apps' && debloatCatalogData.length === 0) {
+        loadDebloatAppsCatalog();
+      } else if (tab === 'tweaks') {
+        loadDebloatUiTweaks();
+      }
+    }
+
+    function loadDebloatAppsCatalog() {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.get_debloat_apps_catalog) {
+        window.pywebview.api.get_debloat_apps_catalog().then(apps => {
+          if (apps && Array.isArray(apps)) {
+            debloatCatalogData = apps;
+            renderDebloatApps(apps);
+          }
+        }).catch(e => console.error("Erro ao carregar catálogo de apps:", e));
+      }
+    }
+
+    function renderDebloatApps(apps) {
+      const container = document.getElementById('debloat-apps-container');
+      if (!container) return;
+
+      container.innerHTML = apps.map(app => {
+        const catClass = 'cat-' + (app.cat || 'microsoft');
+        const catLabel = app.cat === 'sponsored' ? 'Patrocinado' :
+                         app.cat === 'xbox' ? 'Xbox' :
+                         app.cat === 'communication' ? 'Comunicação' : 'Microsoft';
+        const isChecked = app.default ? 'checked' : '';
+        const isSelectedClass = app.default ? 'selected' : '';
+
+        return `
+          <label class="debloat-app-card ${isSelectedClass}" data-app-id="${app.id}" onclick="onAppCardClick(event, this)">
+            <input type="checkbox" value="${app.id}" ${isChecked} onchange="onAppCheckboxChange(this)">
+            <div class="debloat-app-info">
+              <div class="debloat-app-title">
+                <span>${app.name}</span>
+                <span class="debloat-cat-badge ${catClass}">${catLabel}</span>
+              </div>
+              <div class="debloat-app-desc">${app.desc}</div>
+            </div>
+          </label>
+        `;
+      }).join('');
+
+      updateSelectedAppsCount();
+    }
+
+    function onAppCheckboxChange(cb) {
+      const card = cb.closest('.debloat-app-card');
+      if (card) {
+        if (cb.checked) {
+          card.classList.add('selected');
+        } else {
+          card.classList.remove('selected');
+        }
+      }
+      updateSelectedAppsCount();
+    }
+
+    function onAppCardClick(e, card) {
+      if (e.target.tagName !== 'INPUT') {
+        const cb = card.querySelector('input[type=checkbox]');
+        if (cb) {
+          cb.checked = !cb.checked;
+          onAppCheckboxChange(cb);
+        }
+      }
+    }
+
+    function selectDebloatApps(mode) {
+      const cards = document.querySelectorAll('#debloat-apps-container .debloat-app-card');
+      cards.forEach(card => {
+        const cb = card.querySelector('input[type=checkbox]');
+        if (!cb) return;
+        const appId = card.getAttribute('data-app-id');
+        const appData = debloatCatalogData.find(a => a.id === appId);
+
+        if (mode === 'all') {
+          cb.checked = true;
+          card.classList.add('selected');
+        } else if (mode === 'none') {
+          cb.checked = false;
+          card.classList.remove('selected');
+        } else if (mode === 'recommended') {
+          const isDef = appData ? appData.default : true;
+          cb.checked = isDef;
+          if (isDef) card.classList.add('selected');
+          else card.classList.remove('selected');
+        }
+      });
+      updateSelectedAppsCount();
+    }
+
+    function updateSelectedAppsCount() {
+      const checked = document.querySelectorAll('#debloat-apps-container input[type=checkbox]:checked');
+      const countEl = document.getElementById('count-selected-apps');
+      if (countEl) countEl.innerText = checked.length;
+    }
+
+    function removeSelectedDebloatApps() {
+      const checked = Array.from(document.querySelectorAll('#debloat-apps-container input[type=checkbox]:checked')).map(c => c.value);
+      if (checked.length === 0) {
+        showToast("Selecione pelo menos um aplicativo para remover.", false);
+        return;
+      }
+
+      appendDebloatLog(`[EXEC] Desinstalando ${checked.length} aplicativo(s) selecionado(s)...`);
+      showToast(`Iniciando remoção de ${checked.length} aplicativos selecionados...`, true);
+
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.remove_custom_debloat_apps) {
+        window.pywebview.api.remove_custom_debloat_apps(checked).then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 1000);
+        });
+      }
+    }
+
+    function loadDebloatUiTweaks() {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.get_debloat_ui_tweaks) {
+        window.pywebview.api.get_debloat_ui_tweaks().then(tweaks => {
+          if (!tweaks) return;
+          if (document.getElementById('tweak-classic-context'))
+            document.getElementById('tweak-classic-context').checked = !!tweaks.classic_context_menu;
+          if (document.getElementById('tweak-file-ext'))
+            document.getElementById('tweak-file-ext').checked = !!tweaks.show_file_extensions;
+          if (document.getElementById('tweak-hidden-files'))
+            document.getElementById('tweak-hidden-files').checked = !!tweaks.show_hidden_files;
+          if (document.getElementById('tweak-mouse-accel'))
+            document.getElementById('tweak-mouse-accel').checked = !!tweaks.disable_mouse_acceleration;
+          if (document.getElementById('tweak-task-view'))
+            document.getElementById('tweak-task-view').checked = !!tweaks.hide_task_view;
+        });
+      }
+    }
+
+    function applyDebloatUiTweaks() {
+      const payload = {
+        classic_context_menu: document.getElementById('tweak-classic-context').checked,
+        show_file_extensions: document.getElementById('tweak-file-ext').checked,
+        show_hidden_files: document.getElementById('tweak-hidden-files').checked,
+        disable_mouse_acceleration: document.getElementById('tweak-mouse-accel').checked,
+        hide_task_view: document.getElementById('tweak-task-view').checked
+      };
+
+      appendDebloatLog("[EXEC] Aplicando ajustes visuais e de usabilidade do Windows...");
+      showToast("Aplicando personalizações de interface...", true);
+
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.apply_debloat_ui_tweaks) {
+        window.pywebview.api.apply_debloat_ui_tweaks(payload).then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+        });
+      }
+    }
+
+    function launchOfficialWin11DebloatGui() {
+      appendDebloatLog("[EXEC] Solicitando abertura da Janela Gráfica Oficial do Win11Debloat...");
+      showToast("Iniciando janela gráfica oficial do Win11Debloat...", true);
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.launch_official_win11debloat_gui) {
+        window.pywebview.api.launch_official_win11debloat_gui().then(res => {
+          showToast(res.message, res.success);
+        });
+      }
+    }
+
+    function appendDebloatLog(text) {
+      const wrapper = document.getElementById('debloat-console-wrapper');
+      const consoleEl = document.getElementById('debloat-console');
+      if (wrapper) wrapper.style.display = 'block';
+      if (consoleEl) {
+        consoleEl.textContent += (consoleEl.textContent ? "\n" : "") + text;
+        consoleEl.scrollTop = consoleEl.scrollHeight;
+      }
+    }
+
+    function clearDebloatConsole() {
+      const consoleEl = document.getElementById('debloat-console');
+      if (consoleEl) consoleEl.textContent = '';
+    }
+
+    function loadDebloatStatus() {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.get_debloat_status) {
+        window.pywebview.api.get_debloat_status().then(status => {
+          if (!status) return;
+          updateBadge('badge-debloat-telemetry', status.telemetry_disabled, 'Desativada (OK)', 'Ativa');
+          updateBadge('badge-debloat-bing', status.bing_disabled, 'Desativada (OK)', 'Ativa');
+          updateBadge('badge-debloat-copilot', status.copilot_disabled, 'Desativado (OK)', 'Ativo');
+          updateBadge('badge-debloat-recall', status.recall_disabled, 'Desativado (OK)', 'Ativo');
+          updateBadge('badge-debloat-suggestions', status.suggestions_disabled, 'Desativadas (OK)', 'Ativas');
+          updateBadge('badge-debloat-widgets', status.widgets_disabled, 'Desativados (OK)', 'Ativos');
+        }).catch(e => console.error('Erro ao ler status debloat:', e));
+      }
+    }
+
+    function disableDebloatTelemetry() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando telemetria e diagnósticos do sistema...");
+        showToast("Desativando telemetria... Aguarde.", true);
+        window.pywebview.api.disable_debloat_telemetry().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function disableDebloatBing() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando busca Bing no Menu Iniciar...");
+        showToast("Desativando busca Bing... Aguarde.", true);
+        window.pywebview.api.disable_debloat_bing().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function disableDebloatCopilot() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando Microsoft Copilot...");
+        showToast("Desativando Copilot... Aguarde.", true);
+        window.pywebview.api.disable_debloat_copilot().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function disableDebloatRecall() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando Windows AI Recall...");
+        showToast("Desativando AI Recall... Aguarde.", true);
+        window.pywebview.api.disable_debloat_recall().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function disableDebloatSuggestions() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando sugestões e propagandas do Windows...");
+        showToast("Desativando sugestões... Aguarde.", true);
+        window.pywebview.api.disable_debloat_suggestions().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function disableDebloatWidgets() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Desativando Widgets da barra de tarefas...");
+        showToast("Desativando Widgets... Aguarde.", true);
+        window.pywebview.api.disable_debloat_widgets().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 800);
+        });
+      }
+    }
+
+    function createDebloatRestorePoint() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Gerando ponto de restauração do sistema...");
+        showToast("Criando ponto de restauração... Aguarde alguns instantes.", true);
+        window.pywebview.api.create_debloat_restore_point().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+        });
+      }
+    }
+
+    function removeDebloatApps() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Removendo bloatwares e aplicativos pré-instalados (AppX)...");
+        showToast("Removendo bloatwares offline... Isso pode levar alguns segundos.", true);
+        window.pywebview.api.remove_debloat_apps().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          setTimeout(loadDebloatStatus, 1000);
+        });
+      }
+    }
+
+    function restartWindowsExplorer() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("[EXEC] Reiniciando processo Windows Explorer para aplicar alterações visuais...");
+        showToast("Reiniciando Windows Explorer...", true);
+        window.pywebview.api.restart_explorer().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+        });
+      }
+    }
+
+    function applyFullWin11Debloat() {
+      if (window.pywebview && window.pywebview.api) {
+        appendDebloatLog("==========================================");
+        appendDebloatLog("[INÍCIO] Executando Suíte Completa de Debloat (1 Clique)...");
+        showToast("Executando Debloat Completo Offline... Aguarde.", true);
+        window.pywebview.api.apply_full_win11_debloat().then(res => {
+          showToast(res.message, res.success);
+          if (res.log) appendDebloatLog(res.log);
+          appendDebloatLog("==========================================");
+          setTimeout(loadDebloatStatus, 1500);
+        });
+      }
+    }
+
+    function launchOfficialDebloatCli() {
+      applyFullWin11Debloat();
+    }
+
+    // ================= ZOOM PERSONALIZÁVEL DA INTERFACE =================
+    window.currentZoom = 100;
+    let zoomToastTimer = null;
+    let zoomSaveTimeout = null;
+
+    function setZoom(percent, saveToBackend = true) {
+      percent = Math.max(50, Math.min(200, parseInt(percent) || 100));
+      window.currentZoom = percent;
+      const zoomFactor = (percent / 100);
+
+      // Garante que o body permaneça sem zoom legado para não quebrar o centro da tela
+      document.body.style.zoom = '1';
+
+      // Aplica zoom nativo CSS no grid para manter nitidez vetorial 100% cristalina em qualquer escala
+      const grid = document.querySelector('.turing-grid');
+      if (grid) {
+        grid.style.transform = 'none';
+        grid.style.zoom = zoomFactor;
+      }
+
+      // Atualiza pílula do HUD no topo
+      const hudZoom = document.getElementById('hud-zoom-text');
+      if (hudZoom) hudZoom.textContent = percent + '%';
+
+      // Atualiza slider e label na aba de configurações
+      const slider = document.getElementById('slider-ui-zoom');
+      if (slider) slider.value = percent;
+
+      const label = document.getElementById('label-ui-zoom');
+      if (label) label.textContent = percent + '%';
+
+      // Salva no config.json com debounce (500ms)
+      if (saveToBackend && window.pywebview && window.pywebview.api && window.pywebview.api.set_zoom) {
+        if (zoomSaveTimeout) clearTimeout(zoomSaveTimeout);
+        zoomSaveTimeout = setTimeout(() => {
+          window.pywebview.api.set_zoom(percent);
+        }, 500);
+      }
+    }
+
+    function adjustZoom(delta) {
+      setZoom((window.currentZoom || 100) + delta);
+      showZoomToast(window.currentZoom);
+    }
+
+    function resetZoom() {
+      setZoom(100);
+      showZoomToast(100);
+    }
+
+    function showZoomToast(percent) {
+      const el = document.getElementById('zoom-indicator');
+      if (!el) return;
+      el.textContent = `🔍 Zoom: ${percent}%`;
+      el.classList.add('show');
+      if (zoomToastTimer) clearTimeout(zoomToastTimer);
+      zoomToastTimer = setTimeout(() => {
+        el.classList.remove('show');
+      }, 1200);
+    }
+
+    // Atalhos globais de teclado (Ctrl + / Ctrl - / Ctrl 0)
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey) {
+        if (e.key === '=' || e.key === '+' || e.code === 'NumpadAdd') {
+          e.preventDefault();
+          adjustZoom(5);
+        } else if (e.key === '-' || e.key === '_' || e.code === 'NumpadSubtract') {
+          e.preventDefault();
+          adjustZoom(-5);
+        } else if (e.key === '0' || e.code === 'Numpad0') {
+          e.preventDefault();
+          resetZoom();
+        }
+      }
+    });
+
+    // Atalho com a roda do mouse (Ctrl + Wheel)
+    window.addEventListener('wheel', (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        const delta = e.deltaY < 0 ? 5 : -5;
+        adjustZoom(delta);
+      }
+    }, { passive: false });
+
+    // ================= INICIALIZAÇÃO VIA PYWEBVIEW =================
+    window.addEventListener('pywebviewready', () => {
+      if (window.pywebview && window.pywebview.api) {
+        loadOptimizerStatus();
+        loadDebloatStatus();
+        window.pywebview.api.get_initial_config().then(cfg => {
+          if (!cfg) return;
+          if (cfg.theme) setTheme(cfg.theme, false);
+          if (cfg.gpu_profile) setGpuProfile(cfg.gpu_profile, false);
+          if (cfg.cpu_profile) setCpuProfile(cfg.cpu_profile, false);
+          if (cfg.gpu_zero_rpm) {
+            document.getElementById('slider-zero-rpm').value = cfg.gpu_zero_rpm;
+            document.getElementById('label-zero-rpm').innerText = cfg.gpu_zero_rpm + '°C';
+          }
+          if (cfg.gpu_hysteresis) {
+            document.getElementById('slider-hyst').value = cfg.gpu_hysteresis;
+            document.getElementById('label-hyst').innerText = cfg.gpu_hysteresis + '°C';
+          }
+          if (cfg.gpu_manual_speed) {
+            document.getElementById('slider-manual').value = cfg.gpu_manual_speed;
+            document.getElementById('label-manual').innerText = cfg.gpu_manual_speed + '%';
+          }
+          if (cfg.cpu_manual_speed) {
+            document.getElementById('slider-cpu-manual').value = cfg.cpu_manual_speed;
+            document.getElementById('label-cpu-manual').innerText = cfg.cpu_manual_speed + '%';
+          }
+          if (cfg.cpu_target_temp) {
+            document.getElementById('slider-cpu-temp').value = cfg.cpu_target_temp;
+            document.getElementById('label-cpu-temp').innerText = cfg.cpu_target_temp + '°C';
+          }
+          // Restaura personalização de temas
+          if (cfg.card_opacity !== undefined) {
+            const opPct = Math.round(cfg.card_opacity * 100);
+            const sEl = document.getElementById('slider-card-opacity');
+            if (sEl) sEl.value = opPct;
+            const lEl = document.getElementById('label-card-opacity');
+            if (lEl) lEl.innerText = opPct + '%';
+            document.documentElement.style.setProperty('--card-bg-opacity', cfg.card_opacity);
+          }
+          if (cfg.card_blur !== undefined) {
+            const sEl = document.getElementById('slider-card-blur');
+            if (sEl) sEl.value = cfg.card_blur;
+            const lEl = document.getElementById('label-card-blur');
+            if (lEl) lEl.innerText = cfg.card_blur + 'px';
+            document.documentElement.style.setProperty('--card-blur', cfg.card_blur + 'px');
+          }
+          if (cfg.bg_brightness !== undefined) {
+            const sEl = document.getElementById('slider-bg-brightness');
+            if (sEl) sEl.value = cfg.bg_brightness;
+            const lEl = document.getElementById('label-bg-brightness');
+            if (lEl) lEl.innerText = cfg.bg_brightness + '%';
+            document.documentElement.style.setProperty('--bg-brightness', (cfg.bg_brightness / 100.0).toFixed(2));
+          }
+          if (cfg.custom_accent) {
+            applyCustomAccent(cfg.custom_accent);
+          }
+          if (cfg.scanlines !== undefined) {
+            scanlinesEnabled = cfg.scanlines;
+            const overlay = document.querySelector('.scanline-overlay');
+            if (overlay) overlay.style.display = scanlinesEnabled ? 'block' : 'none';
+            const btn = document.getElementById('btn-toggle-scanlines');
+            if (btn) btn.innerText = scanlinesEnabled ? '📺 Scanlines CRT: Ligado' : '📺 Scanlines CRT: Desligado';
+          }
+          if (cfg.animated_bg !== undefined) {
+            animatedBgEnabled = cfg.animated_bg;
+            const btn = document.getElementById('btn-toggle-animated-bg');
+            if (animatedBgEnabled) {
+              document.body.classList.remove('animated-bg-disabled');
+              document.body.classList.add('animated-bg-active');
+              if (btn) btn.innerText = '✨ Fundo Animado: Ativado';
+            } else {
+              document.body.classList.add('animated-bg-disabled');
+              document.body.classList.remove('animated-bg-active');
+              if (btn) btn.innerText = '✨ Fundo Animado: Desativado';
+            }
+          }
+          if (cfg.ui_zoom !== undefined) {
+            setZoom(cfg.ui_zoom, false);
+          }
+          if (cfg.is_fullscreen) {
+            onFullscreenChanged(true);
+          }
+          if (cfg.is_admin === false) {
+            const adminPill = document.getElementById('admin-warning-badge');
+            if (adminPill) adminPill.style.display = 'flex';
+          }
+          initAnimatedCanvas();
+          pollTelemetry();
+        }).catch(e => console.error('Erro ao ler config:', e));
+      }
+    });
+
+    // ================= POLLING DE TELEMETRIA (1s) =================
+    function pollTelemetry() {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.get_telemetry) {
+        window.pywebview.api.get_telemetry().then(data => {
+          if (data) updateTelemetryData(data);
+        }).catch(err => {});
+      }
+    }
+    setInterval(pollTelemetry, 1000);
+
+    // ================= ATUALIZAÇÃO DA TELEMETRIA AO VIVO =================
+    function updateTelemetryData(data) {
+      // 0. Status de Administrador (Pill sutil flutuante)
+      const adminPill = document.getElementById('admin-warning-badge');
+      if (adminPill) {
+        adminPill.style.display = (data.is_admin === false) ? 'flex' : 'none';
+      }
+
+      // 1. CPU (Processador)
+      const cpuLoad = Math.round(data.cpu_load || 0);
+      const cpuTemp = Math.round(data.cpu_temp || 0);
+      const cpuMaxTemp = Math.round(data.cpu_max_temp || cpuTemp);
+      const cpuClock = data.cpu_clock || '3.6G';
+      const cpuPower = data.cpu_power_est || 35;
+
+      document.getElementById('val-cpu-load').innerText = cpuLoad;
+      document.getElementById('val-cpu-temp').innerText = cpuTemp + '°';
+      document.getElementById('val-cpu-clock').innerText = cpuClock;
+      document.getElementById('val-cpu-max-temp').innerText = cpuMaxTemp + '°';
+      document.getElementById('val-cpu-power').innerText = cpuPower + ' W';
+
+      const cpuOffset = 200 - (cpuLoad / 100.0) * 150;
+      document.getElementById('gauge-cpu-fill').style.strokeDashoffset = cpuOffset;
+      document.getElementById('pill-cpu-temp').style.width = Math.min(100, Math.max(10, cpuTemp)) + '%';
+      document.getElementById('pill-cpu-clock').style.width = '75%';
+
+      // RPM do Cooler da CPU e Fans do Gabinete
+      const cpuFanEl = document.getElementById('val-cpu-fan-sub');
+      if (cpuFanEl) {
+        const cpuRpm = data.cpu_fan_rpm || 1200;
+        cpuFanEl.innerText = `${cpuRpm} RPM`;
+      }
+
+      const sysFanEl = document.getElementById('val-sys-fan-sub');
+      if (sysFanEl) {
+        const sysRpm = data.sys_fan_rpm || 1050;
+        sysFanEl.innerText = `${sysRpm} RPM`;
+      }
+
+      // 6 Mini-barras dos núcleos
+      if (data.cpu_cores && Array.isArray(data.cpu_cores)) {
+        for (let i = 0; i < 6; i++) {
+          const cBar = document.getElementById('core-bar-' + i);
+          if (cBar) {
+            cBar.style.width = (data.cpu_cores[i] || 0) + '%';
+          }
+        }
+      }
+
+      // 2. GPU (Placa de Vídeo)
+      const gpuUtil = Math.round(data.gpu_util || 0);
+      const gpuTemp = Math.round(data.gpu_temp || 0);
+      const gpuMaxTemp = Math.round(data.gpu_max_temp || gpuTemp);
+      const gpuVram = data.gpu_vram || '2505 M';
+      const gpuFan = Math.round(data.gpu_fan || 0);
+      const gpuPower = data.gpu_power || 25;
+      const gpuPowerLimit = data.gpu_power_limit || 180;
+      const gpuClockG = data.gpu_clock || 1905;
+      const gpuPcie = data.gpu_pcie || 'Gen 3 x8';
+
+      document.getElementById('val-gpu-util').innerText = gpuUtil;
+      document.getElementById('val-gpu-temp').innerText = gpuTemp + '°';
+      document.getElementById('val-gpu-max-temp').innerText = gpuMaxTemp + '°';
+      document.getElementById('val-gpu-vram').innerText = gpuVram;
+      document.getElementById('val-gpu-power').innerText = `${gpuPower} W / ${gpuPowerLimit} W`;
+      document.getElementById('val-gpu-clock').innerText = `${gpuClockG} MHz`;
+      document.getElementById('val-gpu-pcie').innerText = gpuPcie;
+
+      const vramGbUsed = ((data.gpu_vram_used_mb || 2505) / 1024).toFixed(1);
+      const vramGbTot = ((data.gpu_vram_total_mb || 8151) / 1024).toFixed(1);
+      document.getElementById('val-gpu-vram-sub').innerText = `${vramGbUsed} / ${vramGbTot} GB (${data.gpu_vram_pct || 30}%)`;
+      
+      const gpuFanSub = document.getElementById('val-gpu-fan-sub');
+      if (gpuFanSub) {
+        const gpuRpm = data.gpu_fan_rpm || 0;
+        if (gpuFan === 0) {
+          gpuFanSub.innerText = '0% • 0 RPM';
+          gpuFanSub.style.color = 'var(--subtext)';
+        } else {
+          gpuFanSub.innerText = `${gpuFan}% • ${gpuRpm > 0 ? gpuRpm + ' RPM' : 'Ativo'}`;
+          gpuFanSub.style.color = 'var(--secondary)';
+        }
+      }
+
+      const gpuOffset = 200 - (gpuUtil / 100.0) * 150;
+      document.getElementById('gauge-gpu-fill').style.strokeDashoffset = gpuOffset;
+      document.getElementById('pill-gpu-temp').style.width = Math.min(100, Math.max(10, gpuTemp)) + '%';
+      document.getElementById('pill-gpu-vram').style.width = (data.gpu_vram_pct || 30) + '%';
+
+      // 3. RAM & Virtual
+      const ramPct = Math.round(data.ram_pct || 0);
+      document.getElementById('val-ram-pct').innerText = ramPct;
+      document.getElementById('val-ram-gb').innerText = `${data.ram_used_gb || '8.9'} / ${data.ram_total_gb || '24.0'} GB`;
+      document.getElementById('val-ram-avail').innerText = `${data.ram_avail_gb || '15.1'} GB`;
+      document.getElementById('val-ram-swap').innerText = `${data.swap_used_gb || '0.1'} / ${data.swap_total_gb || '1.5'} GB`;
+
+      const ramOffset = 200 - (ramPct / 100.0) * 150;
+      document.getElementById('gauge-ram-fill').style.strokeDashoffset = ramOffset;
+
+      // 4. Todos os Discos (SSDs / HDDs) & I/O & Rede
+      const disksContainer = document.getElementById('disks-container');
+      if (disksContainer && Array.isArray(data.disks) && data.disks.length > 0) {
+        let html = '';
+        data.disks.forEach(d => {
+          const pct = Math.min(100, Math.max(0, d.percent || 0));
+          const isWarning = pct >= 88;
+          const isHDD = (d.type || '').toUpperCase() === 'HDD';
+          const badgeClass = isHDD ? 'badge-hdd' : 'badge-ssd';
+          const fillClass = isWarning ? 'fill-warning' : (isHDD ? 'fill-hdd' : 'fill-ssd');
+          const titleText = `${d.letter} ${d.label ? d.label + ' ' : ''}(${d.type}) • ${d.free_gb} GB Livres`;
+
+          html += `
+            <div class="disk-row" title="${titleText}">
+              <span class="disk-letter">${d.letter}</span>
+              <span class="disk-badge ${badgeClass}">${d.type || 'SSD'}</span>
+              <div class="pill-track disk-track">
+                <div class="pill-fill ${fillClass}" style="width: ${pct}%;"></div>
+              </div>
+              <span class="disk-stats">${pct}% ${d.used_gb}/${d.total_gb}G</span>
+            </div>
+          `;
+        });
+        disksContainer.innerHTML = html;
+      } else {
+        const diskPct = Math.round(data.disk_pct || 12);
+        const pill = document.getElementById('pill-disk');
+        if (pill) pill.style.width = diskPct + '%';
+        const val = document.getElementById('val-disk');
+        if (val) val.innerText = `${diskPct}%  ${data.disk_used_gb || '56'}/${data.disk_total_gb || '465'}G`;
+      }
+      
+      const diskIoEl = document.getElementById('val-disk-io');
+      if (diskIoEl) {
+        diskIoEl.innerText = `L: ${data.disk_read_str || '0.0 M/s'} • E: ${data.disk_write_str || '0.0 M/s'}`;
+      }
+
+      document.getElementById('val-net-down').innerText = data.net_down || '↓ 0.0 K';
+      document.getElementById('val-net-up').innerText = data.net_up || '↑ 0.0 K';
+      document.getElementById('val-net-session').innerText = `↓ ${data.net_down_total_gb || '0.0'} GB • ↑ ${data.net_up_total_gb || '0.0'} GB`;
+
+      // 5. Data, Hora e Uptime
+      document.getElementById('val-date').innerText = data.date_str || '2026/10/28';
+      document.getElementById('val-time').innerText = data.time_str || '23:58:42';
+      document.getElementById('val-uptime').innerText = data.uptime_str || '0h 0m';
+      document.getElementById('val-procs').innerText = data.procs_count || 150;
+
+      // 6. Atualização em Tempo Real do Painel de Fans da RTX 5060 Ti
+      const liveFanPct = document.getElementById('gpu-live-fan-pct');
+      if (liveFanPct) liveFanPct.innerText = gpuFan + '%';
+
+      const liveFanRpm = document.getElementById('gpu-live-fan-rpm');
+      if (liveFanRpm) {
+        const rpmVal = data.gpu_fan_rpm || (gpuFan > 0 ? Math.round(gpuFan * 25.5) : 0);
+        liveFanRpm.innerText = rpmVal > 0 ? `${rpmVal} RPM` : '0 RPM (0 dB)';
+      }
+
+      const liveTemp = document.getElementById('gpu-live-temp');
+      if (liveTemp) liveTemp.innerText = gpuTemp + '°C';
+
+      const airBar = document.getElementById('gpu-fan-airflow-bar');
+      if (airBar) airBar.style.width = gpuFan + '%';
+
+      const stateBadge = document.getElementById('gpu-fan-state-badge');
+      if (stateBadge) {
+        if (gpuFan === 0) {
+          stateBadge.innerText = 'ZERO-RPM (PASSIVO • 0 dB)';
+          stateBadge.className = 'badge-status-normal';
+        } else {
+          stateBadge.innerText = `RESFRIAMENTO ATIVO (${gpuFan}%)`;
+          stateBadge.className = 'badge-status-active';
+        }
+      }
+
+      // 7. Estatísticas de Jogo em Execução (FPS, Frame Time, 1% Low, Histórico)
+      const gameCard = document.getElementById('hud-game-card');
+      const gameStats = data.game_stats;
+
+      if (gameCard) {
+        if (gameStats && gameStats.is_running) {
+          gameCard.style.display = 'flex';
+
+          // Atualiza Nome e Processo do Jogo
+          const titleEl = document.getElementById('game-hud-title');
+          if (titleEl) titleEl.innerText = gameStats.game_name || 'Jogo Detectado';
+
+          const exeEl = document.getElementById('game-hud-exe');
+          if (exeEl) exeEl.innerText = gameStats.game_exe || '';
+
+          // Tempo de Sessão
+          const sessionEl = document.getElementById('game-hud-session');
+          if (sessionEl) sessionEl.innerText = gameStats.session_duration || '00:00:00';
+
+          // FPS
+          const fpsEl = document.getElementById('game-hud-fps');
+          if (fpsEl) fpsEl.innerText = gameStats.fps || 0;
+
+          // Frame Time
+          const ftEl = document.getElementById('game-hud-frametime');
+          const ftVal = (gameStats.frametime_ms || 0).toFixed(1);
+          if (ftEl) ftEl.innerText = ftVal;
+
+          const ftTag = document.getElementById('game-hud-graph-val');
+          if (ftTag) ftTag.innerText = ftVal + ' ms';
+
+          // Qualidade do Frame Time
+          const ftQual = document.getElementById('game-hud-frametime-quality');
+          if (ftQual) {
+            if (gameStats.frametime_ms <= 8.33) {
+              ftQual.innerText = '⚡ FLUIDEZ MÁXIMA';
+              ftQual.className = 'game-tag-success';
+            } else if (gameStats.frametime_ms <= 16.6) {
+              ftQual.innerText = '✓ ESTÁVEL (60+ FPS)';
+              ftQual.className = 'game-tag-info';
+            } else {
+              ftQual.innerText = '⚠️ LIMITADO';
+              ftQual.className = 'pill-tag';
+            }
+          }
+
+          // 1% Low
+          const lowEl = document.getElementById('game-hud-1pct');
+          if (lowEl) lowEl.innerText = gameStats.fps_1pct_low || Math.round((gameStats.fps || 60) * 0.8);
+
+          // Status Badge
+          const statusBadge = document.getElementById('game-hud-status-badge');
+          if (statusBadge) {
+            if (gameStats.fps >= 100) {
+              statusBadge.innerText = 'DESEMPENHO IDEAL';
+            } else if (gameStats.fps >= 60) {
+              statusBadge.innerText = 'BOM DESEMPENHO';
+            } else {
+              statusBadge.innerText = 'TAXA REDUZIDA';
+            }
+          }
+
+          // Gráfico de Frame Time (SVG Polyline & Polygon)
+          const history = gameStats.frametime_history || [];
+          if (history.length > 1) {
+            const svgLine = document.getElementById('game-frametime-svg-line');
+            const svgPoly = document.getElementById('game-frametime-svg-poly');
+
+            const width = 200;
+            const height = 44;
+            const maxFt = Math.max(25.0, ...history);
+            const minFt = Math.max(1.0, Math.min(...history) * 0.8);
+            const range = Math.max(5.0, maxFt - minFt);
+
+            const stepX = width / (history.length - 1);
+            const points = history.map((val, idx) => {
+              const x = (idx * stepX).toFixed(1);
+              const norm = (val - minFt) / range;
+              const y = (height - 6 - (norm * (height - 12))).toFixed(1);
+              return `${x},${y}`;
+            });
+
+            const pointsStr = points.join(' ');
+            if (svgLine) svgLine.setAttribute('points', pointsStr);
+
+            if (svgPoly) {
+              const polyStr = `0,${height} ${pointsStr} ${width},${height}`;
+              svgPoly.setAttribute('points', polyStr);
+            }
+          }
+        } else {
+          gameCard.style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
