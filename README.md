@@ -27,8 +27,10 @@ Construído com **Python 3.12 (64-bit)** e uma interface moderna acelerada por h
 | 💣 Counter-Strike 2 (Tático) | 🦾 Cyberpunk 2077 (Neon) |
 | :---: | :---: |
 | <img src="docs/screenshots/preview_cs2.png" width="100%" style="border-radius: 8px;" /> | <img src="docs/screenshots/preview_cyberpunk.png" width="100%" style="border-radius: 8px;" /> |
-| **🎯 Valorant (Radianite)** | **📱 Turing LCD (Painel Gabinete)** |
-| <img src="docs/screenshots/preview_valorant.png" width="100%" style="border-radius: 8px;" /> | <img src="docs/screenshots/preview_turing_lcd.png" width="100%" style="border-radius: 8px;" /> |
+| **🎯 Valorant (Radianite)** | **🌴 GTA V / Vice City (Pôr do Sol 80s)** |
+| <img src="docs/screenshots/preview_valorant.png" width="100%" style="border-radius: 8px;" /> | <img src="docs/screenshots/preview_gta.png" width="100%" style="border-radius: 8px;" /> |
+| **📱 Turing LCD (SensorPanel Gabinete)** | |
+| <img src="docs/screenshots/preview_turing_lcd.png" width="100%" style="border-radius: 8px;" /> | |
 
 ---
 
