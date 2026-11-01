@@ -1,122 +1,121 @@
-# ⚡ RTX Fan Controller & Aegis Gaming SensorPanel HUD
+# ⚡ Aegis Gaming HUD & RTX Fan Controller
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%2010-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows 11">
-  <img src="https://img.shields.io/badge/Python-3.12%20(64--bit)-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12">
-  <img src="https://img.shields.io/badge/GPU-NVIDIA%20GeForce%20RTX-76B900?style=for-the-badge&logo=nvidia&logoColor=white" alt="NVIDIA GeForce">
-  <img src="https://img.shields.io/badge/UI-PyWebView%20%2B%20Chromium-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="PyWebView Edge Chromium">
+  <img src="https://img.shields.io/badge/Python-3.12_64--bit-blue.svg?logo=python&logoColor=white" alt="Python 3.12 64-bit" />
+  <img src="https://img.shields.io/badge/Interface-PyWebView%20%2B%20Chromium-informational.svg?logo=microsoftedge&logoColor=white" alt="PyWebView & Edge" />
+  <img src="https://img.shields.io/badge/NVIDIA-NVML%20%2B%20NVAPI-76B900.svg?logo=nvidia&logoColor=white" alt="NVIDIA NVML" />
+  <img src="https://img.shields.io/badge/Windows-11%20%2F%2010%20(64--bit)-0078D6.svg?logo=windows&logoColor=white" alt="Windows 11" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License MIT" />
 </p>
 
-Aplicativo completo de alta performance para **Controle Térmico Inteligente de Ventoinhas (Fans)**, **SensorPanel HUD Gamer em Tela Cheia Borderless** (ideal para monitores principais ou telas LCD secundárias de gabinete 3.5", 5", 7", etc.), **Otimizador do Windows** e **Win11 Debloater Offline**.
+---
+
+## 🚀 Visão Geral
+
+O **Aegis Gaming HUD & RTX Fan Controller** é uma aplicação completa de telemetria em tempo real, controle térmico de hardware e painel sensor (*SensorPanel*) gamer em tela cheia borderless, projetado tanto para monitores principais quanto para **telas LCD secundárias embutidas no gabinete** (displays de 3.5", 5", 7", etc.).
+
+Construído com **Python 3.12 (64-bit)** e uma interface moderna acelerada por hardware via **PyWebView (Microsoft Edge WebView2 Chromium)** com efeitos *glassmorphism*, temas dinâmicos dos jogos mais populares e controles térmicos de alta precisão.
 
 ---
 
-## 🎯 Destaques e Funcionalidades
+## ✨ Principais Funcionalidades
 
-### 🎮 SensorPanel HUD Gamer
-* **Design Glassmorphism Moderno**: Visual gamer neon com anéis dinâmicos rotativos, mostradores circulares e efeitos de profundidade.
-* **11+ Temas Oficiais Inspirados nos Maiores Jogos**:
-  * 💣 **Counter-Strike 2 (CS2)** (Laranja tático, poeira de combate e hazard stripes)
-  * 🎯 **Valorant** (Vermelho Radianite, ciano brilhante e geometria angular)
-  * ⚔️ **League of Legends (LoL)** (Ouro Hextech, azul arcano e runas celestiais)
-  * 🌴 **GTA V / GTA VI** (Pôr do sol degradê Vice City, rosa choque e azul turquesa)
-  * 🪖 **Call of Duty: Warzone** (Verde fosfórico militar e grade topográfica)
-  * 🦹 **Fortnite** (Fenda cósmica roxa, tempestade e ouro Royale)
-  * ⛏️ **Minecraft** (Blocos de Netherite, circuitos ativos de Redstone e Diamante)
-  * 💍 **Elden Ring** (Ouro místico da Térvore e runas arcanas)
-  * 🦾 **Cyberpunk 2077** (Amarelo neon Samurai, glitches e vermelho Arasaka)
-  * 🏆 **Apex Legends** (Vermelho Apex Predator e grafite de titânio)
-  * 📱 **Turing Classic** (Visual cósmico fiel com anéis roxo/ciano)
-* **Escala e Zoom Vetorial 100% Nítido**: Suporte a zoom de 50% até 200% via renderização vetorial subpixel, mantendo texto e ícones perfeitamente cristalinos em qualquer resolução.
-* **Auto-Game Tracker**: Identifica automaticamente jogos em execução (CS2, Valorant, GTA, Warzone, Elden Ring, etc.) e exibe contador de FPS, frametime e tempo de sessão ao vivo.
+### 🎮 1. Temas Imersivos dos Jogos Mais Populares
+A interface se adapta dinamicamente aos títulos mais jogados da atualidade, incluindo identidade visual, anéis giratórios HUD e efeitos visuais exclusivos:
+- 💣 **Counter-Strike 2 (CS2)**: Laranja tático, poeira de combate e hazard stripes.
+- 🎯 **Valorant**: Vermelho Radianite, ciano vibrante e geometria angular.
+- ⚔️ **League of Legends (LoL)**: Ouro Hextech, azul arcano de Piltover e runas celestiais.
+- 🌴 **GTA V / GTA VI (Vice City)**: Pôr do sol degradê anos 80, rosa choque e azul turquesa.
+- 🪖 **Call of Duty: Warzone**: Verde fosfórico de visão noturna e grade topográfica militar.
+- 🦹 **Fortnite (Battle Royale)**: Fenda cósmica roxa, azul da tempestade e ouro de Vitória Royale.
+- ⛏️ **Minecraft**: Blocos de Netherite com circuitos ativos de Redstone, Diamante e Esmeralda.
+- 💍 **Elden Ring**: Ouro místico da Térvore (*Erdtree*) e brasas de Graça Perdida.
+- 🦾 **Cyberpunk 2077**: Amarelo neon Samurai, vermelho Arasaka e glitches de Night City.
+- 🏆 **Apex Legends**: Vermelho Apex Predator, grafite de titânio e energia de escudo.
+- 📱 **Turing Classic & Supercar**: Visuais fiéis e futuristas para telas secundárias.
 
 ---
 
-### ❄️ Controle Térmico Avançado de Fans
-* **Motor Duplo de Alta Confiabilidade**:
-  1. **NVAPI Nativo** (via `LibreHardwareMonitorLib`): Permite controle manual ou por curva da ventoinha da GPU com modo Zero RPM (0 dB em idle).
-  2. **NVML (NVIDIA Management Library)**: Telemetria de alta frequência para temperatura, clock, VRAM e consumo elétrico.
-* **Curva de Ventoinha Personalizável**:
-  * Definição de pontos de curva customizados temperatura vs % rotação.
-  * Histerese térmica para evitar aceleração/desaceleração contínua (*fan hunting*).
-  * Perfis rápidos: *Silencioso*, *Equilibrado*, *Performance*, *Manual* e *Curva*.
+### 📊 2. Telemetria Completa de Hardware
+- **Processador (CPU)**:
+  - Uso geral (%) e frequência do clock em tempo real.
+  - Temperatura ao vivo + **Pico Máximo de Temperatura (°C)** registrado na sessão.
+  - Consumo estimado do pacote (Watts TDP).
+  - Medidor individual por núcleo com mini-barras dinâmicas.
+- **Placa de Vídeo (GPU - NVIDIA RTX)**:
+  - Uso da GPU (%) e Temperatura com **Pico Máximo (°C)**.
+  - Clocks em tempo real: Clock do Núcleo (MHz) e Memória VRAM (MHz).
+  - Consumo elétrico (Watts atuais vs Limite de TDP).
+  - Uso detalhado de VRAM (MB / GB e controlador de memória).
+  - Rotação e velocidade real física das ventoinhas (%).
+- **Armazenamento Multi-Disco (Todos os SSDs e HDDs)**:
+  - Identificação automática de todas as unidades conectadas (`C:`, `D:`, `E:`, etc.).
+  - Distinção visual inteligente entre **SSD** e **HDD**.
+  - Porcentagem de uso, espaço utilizado e espaço livre em GB.
+  - Taxa de transferência de Leitura e Escrita em tempo real (**I/O**).
+- **Memória RAM & Arquivo de Paginação**:
+  - RAM física (GB usados, total, percentual e memória livre).
+  - Memória Virtual Swap / Pagefile ao vivo.
+- **Rede & Tráfego de Dados**:
+  - Velocidade instantânea de Download (`↓ M/s`) e Upload (`↑ M/s`).
+  - Volume total transferido na sessão (`Down: GB • Up: GB`).
+- **Sistema**:
+  - Tempo de atividade do PC (*Uptime*) e total de processos ativos.
+  - Relógio digital e data sincronizados.
 
 ---
 
-### 📊 Telemetria Completa de Hardware
-* **Processador (CPU)**: Uso total %, relógio (GHz), temperatura ao vivo, pico máximo (°C), consumo elétrico estimado (Watts) e uso individual dos 6 núcleos físicos.
-* **Placa de Vídeo (GPU)**: Uso %, temperatura ao vivo, pico máximo, clock do chip (MHz), clock da memória VRAM (MHz), consumo elétrico em Watts vs TDP (180W), uso de VRAM (MB/GB) e largura de barramento PCIe.
-* **Memória RAM & Swap**: Consumo em GB, percentual em uso, memória livre disponível e paginação Swap/Virtual.
-* **Armazenamento Multi-Disco**:
-  * Detecção automática de **todos os SSDs e HDDs** do sistema (`C:`, `D:`, etc.).
-  * Distinção visual inteligente entre SSD e HDD com cores dedicadas.
-  * Taxa de transferência em tempo real (Leitura e Escrita I/O em MB/s).
-* **Rede**: Velocidade instantânea de Download e Upload, além do volume total transferido na sessão (GB).
-* **Sistema**: Uptime contínuo do PC, contagem de processos em execução, data e hora.
+### ❄️ 3. Controle Inteligente de Ventoinhas
+- **Curva de Ventoinha Personalizada**: Ajuste pontos de temperatura vs velocidade em tempo real.
+- **Zero RPM Inteligente**: Ventoinhas desligam automaticamente em temperaturas baixas para silêncio absoluto.
+- **Histerese Anti-Ruído**: Evita que as ventoinhas fiquem acelerando e desacelerando repetidamente em variações curtas de temperatura.
+- **Perfis Pré-configurados**: Silencioso, Equilibrado, Performance ou Manual fixo.
 
 ---
 
-### ⚡ Windows Optimizer & Win11 Debloater Offline
-* **Otimizador do Windows**:
-  * Gerenciamento de Memória Virtual (Pagefile/Swap).
-  * Ativação do Plano de Energia de Desempenho Máximo.
-  * Otimização de latência de rede (TCP/IP).
-  * Limpeza de memória standby / cache do sistema.
-* **Debloater 100% Offline**:
-  * Desativação de telemetria e diagnósticos do Windows.
-  * Remoção do Bing/busca web no Menu Iniciar.
-  * Desativação de Copilot e Recall.
-  * Remoção de mais de 80 bloatwares e aplicativos pré-instalados da Microsoft Store.
+### 🛠️ 4. Otimizador do Windows & Debloater Integrados
+- **Limpeza de Memória Cache (Standby RAM List)** com 1 clique.
+- **Otimizações para Jogos**: Ativação do Modo de Jogo (*Game Mode*), Plano de Energia de Alto Desempenho e prioridade de GPU.
+- **Debloater Nativo Offline**: Desativação de telemetria desnecessária, Cortana, Copilot e apps promocionais do Windows.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ⌨️ Atalhos de Teclado & Controles
 
-* **Linguagem**: Python 3.12 (64-bit)
-* **Frontend**: HTML5, CSS3 Moderno (Glassmorphism), JavaScript ES6+
-* **Engine de Renderização**: [PyWebView](https://pywebview.flowrl.com/) com Microsoft Edge Chromium (WebView2)
-* **Telemetria de Hardware**: `psutil`, NVIDIA Management Library (`nvml.dll`), `LibreHardwareMonitorLib` (.NET CLR via `pythonnet`)
-* **Bridge de Placa-Mãe**: `HardwareBridge.exe` em C# .NET
+| Atalho / Ação | Função |
+| :--- | :--- |
+| **`F11`** | Alterna entre Tela Cheia 100% Borderless e Modo Janela |
+| **`ESC`** | Sai do modo Tela Cheia |
+| **`Ctrl` + `+`** ou **`Ctrl` + Roda do Mouse** | Aumenta o Zoom com escala vetorial nítida |
+| **`Ctrl` + `-`** | Diminui o Zoom |
+| **`Ctrl` + `0`** | Restaura o Zoom para 100% padrão |
 
 ---
 
-## 🚀 Como Executar
+## 📦 Como Executar
 
 ### Pré-requisitos
-* **Windows 10 ou 11 (64-bit)**
-* **Python 3.12 (64-bit)**
-* Placa de vídeo **NVIDIA GeForce** (série GTX/RTX) com drivers atualizados
+- **Windows 10 ou Windows 11 (64-bit)**
+- **Python 3.12 (64-bit)**
 
-### Instalação Rápida
-1. Clone o repositório:
+### Passo a Passo
+1. Clone este repositório ou baixe os arquivos:
    ```bash
    git clone https://github.com/tmesquita13/RTX_Fan_Controller.git
    cd RTX_Fan_Controller
    ```
-
 2. Instale as dependências:
    ```bash
    pip install -r requirements.txt
    ```
-
-3. Inicie o programa:
-   * Basta dar dois cliques em **`Iniciar_Programa.bat`**.
-
----
-
-## ⌨️ Atalhos de Teclado
-
-| Tecla | Ação |
-| :--- | :--- |
-| **F11** | Alterna entre Tela Cheia Borderless e Janela |
-| **ESC** | Sai do modo tela cheia |
-| **Ctrl +** | Aumenta o Zoom da Interface (+5%) |
-| **Ctrl -** | Diminui o Zoom da Interface (-5%) |
-| **Ctrl 0** | Restaura o Zoom para 100% Padrão |
-| **Ctrl + Scroll** | Ajuste dinâmico de zoom com a roda do mouse |
+3. Inicie o programa clicando duas vezes em:
+   ```text
+   Iniciar_Programa.bat
+   ```
+   *(O script solicitará privilégios de Administrador para liberar o controle das ventoinhas e sensores).*
 
 ---
 
 ## 📄 Licença
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais detalhes.
+Distribuído sob a licença [MIT](LICENSE). Consulte `LICENSE` para mais informações.

@@ -1,10 +1,10 @@
-# Byte-compiled / optimized files
+# Python bytecode & cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyc
 
-# Local runtime logs & temporary files
+# Runtime logs and temporary files
 *.log
 crash.log
 temp_*.vbs
