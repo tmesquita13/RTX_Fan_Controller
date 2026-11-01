@@ -1,6 +1,10 @@
 # ⚡ Aegis Gaming HUD & RTX Fan Controller
 
 <p align="center">
+  <img src="docs/screenshots/preview_cs2.png" alt="Aegis Gaming HUD - Counter-Strike 2 Theme" width="100%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.12_64--bit-blue.svg?logo=python&logoColor=white" alt="Python 3.12 64-bit" />
   <img src="https://img.shields.io/badge/Interface-PyWebView%20%2B%20Chromium-informational.svg?logo=microsoftedge&logoColor=white" alt="PyWebView & Edge" />
   <img src="https://img.shields.io/badge/NVIDIA-NVML%20%2B%20NVAPI-76B900.svg?logo=nvidia&logoColor=white" alt="NVIDIA NVML" />
@@ -15,6 +19,16 @@
 O **Aegis Gaming HUD & RTX Fan Controller** é uma aplicação completa de telemetria em tempo real, controle térmico de hardware e painel sensor (*SensorPanel*) gamer em tela cheia borderless, projetado tanto para monitores principais quanto para **telas LCD secundárias embutidas no gabinete** (displays de 3.5", 5", 7", etc.).
 
 Construído com **Python 3.12 (64-bit)** e uma interface moderna acelerada por hardware via **PyWebView (Microsoft Edge WebView2 Chromium)** com efeitos *glassmorphism*, temas dinâmicos dos jogos mais populares e controles térmicos de alta precisão.
+
+---
+
+## 📸 Galeria de Temas & Demonstração Visual
+
+| 💣 Counter-Strike 2 (Tático) | 🦾 Cyberpunk 2077 (Neon) |
+| :---: | :---: |
+| <img src="docs/screenshots/preview_cs2.png" width="100%" style="border-radius: 8px;" /> | <img src="docs/screenshots/preview_cyberpunk.png" width="100%" style="border-radius: 8px;" /> |
+| **🎯 Valorant (Radianite)** | **📱 Turing LCD (Painel Gabinete)** |
+| <img src="docs/screenshots/preview_valorant.png" width="100%" style="border-radius: 8px;" /> | <img src="docs/screenshots/preview_turing_lcd.png" width="100%" style="border-radius: 8px;" /> |
 
 ---
 
